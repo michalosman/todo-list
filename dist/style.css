@@ -102,8 +102,6 @@ i {
 
 .main {
   display: flex;
-  align-items: stretch;
-  justify-content: stretch;
   margin-bottom: 3.5rem;
 }
 
@@ -129,7 +127,7 @@ i {
 }
 
 .project-preview {
-  flex: 3;
+  flex: 5;
   padding: 2rem 4rem;
 }
 
@@ -173,4 +171,36 @@ i {
   margin-left: 1rem;
   font-size: 2rem;
   color: var(--primary-light);
+}
+
+@media (max-width: 1200px) {
+  .project-preview {
+    flex: 3;
+  }
+}
+
+@media (max-width: 850px) {
+  .project-preview {
+    flex: 2;
+  }
+}
+
+@media (max-width: 550px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media (max-width: 450px) {
+  .header {
+    flex-direction: column;
+  }
+
+  .user-panel {
+    margin-top: 2rem;
+  }
+
+  .project-preview {
+    flex: 1;
+  }
 }
