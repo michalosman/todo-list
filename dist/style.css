@@ -43,6 +43,10 @@ button {
   padding: 1rem;
 }
 
+i {
+  margin-right: 1rem;
+}
+
 /* Header */
 
 .header {
@@ -77,9 +81,11 @@ button {
 
 .user-name {
   margin-right: 2rem;
+  font-size: 2rem;
 }
 
 .button-sign-out {
+  font-size: 2rem;
   background-color: rgba(173, 85, 85, 1);
 }
 
@@ -94,14 +100,9 @@ button {
 }
 
 .nav {
-  padding: 1rem;
+  padding: 2rem;
   flex: 1;
-  height: 100%;
   background-color: var(--secondary-light);
-}
-
-.nav {
-  width: 100%;
 }
 
 .button-nav {
@@ -112,10 +113,6 @@ button {
 
 .button-nav:hover {
   background-color: #ccc;
-}
-
-.default-project {
-  padding: 1rem;
 }
 
 .user-projects h1 {
@@ -140,7 +137,6 @@ button {
 
 .fa-circle,
 .fa-check-circle {
-  margin-right: 1rem;
   font-size: 2.4rem;
 }
 
@@ -154,10 +150,13 @@ button {
   align-items: center;
   justify-content: center;
   width: 100%;
+  padding: 0.5rem;
   background-color: var(--primary-dark);
+  color: var(--primary-light);
 }
 
 .fa-github {
   margin-left: 1rem;
-  color: black;
+  font-size: 2rem;
+  color: var(--primary-light);
 }
