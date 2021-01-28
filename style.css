@@ -1,0 +1,33 @@
+:root {
+  --font: #fff;
+  --background: #fff;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+  line-height: 1.6;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+header {
+  font-size: 2.4rem;
+}
+
+button {
+  color: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
