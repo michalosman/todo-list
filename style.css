@@ -19,6 +19,10 @@
 html {
   font-size: 62.5%;
   line-height: 1.6;
+
+  /* footer support */
+  position: relative;
+  min-height: 100%;
 }
 
 body {
@@ -38,6 +42,7 @@ button {
   font-family: inherit;
   font-size: inherit;
   border: none;
+  border-radius: 5px;
   outline: none;
   cursor: pointer;
   padding: 1rem;
@@ -86,17 +91,20 @@ i {
 
 .button-sign-out {
   font-size: 2rem;
-  background-color: rgba(173, 85, 85, 1);
+  background-color: #be6666;
 }
 
 .button-sign-out:hover {
-  background-color: rgba(173, 85, 85, 0.9);
+  background-color: #ad5555;
 }
 
 /* Main */
 
 .main {
   display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  margin-bottom: 3.5rem;
 }
 
 .nav {
@@ -117,22 +125,28 @@ i {
 
 .user-projects h1 {
   padding: 1rem;
+  margin-top: 1rem;
 }
 
 .project-preview {
   flex: 3;
-  margin-top: 2rem;
-  margin-left: 5rem;
+  padding: 2rem 4rem;
 }
 
 .project-preview h1 {
   padding: 0 1rem;
+  margin-bottom: 1rem;
 }
 
-.task {
+.button-task {
   display: flex;
   align-items: center;
   padding: 1rem;
+  width: 100%;
+}
+
+.button-task:hover {
+  background-color: #ddd;
 }
 
 .fa-circle,
