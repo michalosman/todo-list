@@ -1,6 +1,10 @@
 :root {
   --font: #fff;
   --background: #fff;
+  --header-background: #fff;
+  --nav-background: #fff;
+  --main-background: #fff;
+  --footer-background: #fff;
 }
 
 *,
@@ -9,6 +13,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  border: 1px solid black;
 }
 
 html {
@@ -25,9 +30,86 @@ header {
 }
 
 button {
+  display: block;
   color: inherit;
   font-family: inherit;
-  cursor: pointer;
-  border: none;
+  font-size: inherit;
+  /* border: none; */
   outline: none;
+  cursor: pointer;
+  padding: 1rem;
+}
+
+/* Header */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+.user-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-name {
+  margin-right: 2rem;
+}
+
+/* Main */
+
+.main {
+  display: flex;
+  padding: 1rem;
+}
+
+.nav {
+  padding: 1rem;
+  flex: 1;
+}
+
+.nav button {
+  width: 100%;
+  text-align: left;
+}
+
+.default-project {
+  padding: 1rem;
+}
+
+.user-projects h1 {
+  padding: 1rem;
+}
+
+.project-preview {
+  flex: 3;
+  padding: 1rem;
+}
+
+.project-preview h1 {
+  padding: 1rem;
+}
+
+.task {
+  padding: 1rem;
+}
+
+/* Footer */
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.fab {
+  margin-left: 1rem;
+  color: black;
 }
