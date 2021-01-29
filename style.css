@@ -74,13 +74,8 @@ i {
 }
 
 .page-name {
-  margin-left: 2rem;
   font-family: "Yusei Magic", sans-serif;
   font-size: 4rem;
-}
-
-.fa-bars {
-  margin-right: 0;
 }
 
 .button-options {
@@ -90,7 +85,11 @@ i {
 }
 
 .button-options:hover {
-  color: #bbb;
+  color: #ccc;
+}
+
+.fa-bars {
+  margin-right: 0;
 }
 
 .options-panel {
@@ -99,10 +98,10 @@ i {
   top: 7rem;
   right: 2rem;
   padding: 2rem;
-  border: 1px solid #999;
+  border: 1px solid #aaa;
   border-radius: 5px;
-  background-color: var(--secondary-light);
-  color: #222;
+  background-color: #ddd;
+  color: #444;
   font-size: 1.6rem;
 }
 
@@ -119,7 +118,7 @@ i {
 
 .button-sign-out {
   width: 100%;
-  border: 1px solid #555;
+  border: 1px solid #b86060;
   background-color: #eb9393;
 }
 
@@ -172,6 +171,7 @@ i {
   align-items: center;
   width: 100%;
   padding: 1rem;
+  background-color: var(--primary-light);
 }
 
 .button-task:hover {
