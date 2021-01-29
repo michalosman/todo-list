@@ -21,8 +21,8 @@ html {
   line-height: 1.6;
 
   /* footer support */
-  position: relative;
-  min-height: 100%;
+  position: relative; /* makes html an element which footer sticks to */
+  min-height: 100%; /* not necessary when main takes all available space */
 }
 
 body {
@@ -74,23 +74,23 @@ i {
 }
 
 .page-name {
-  margin-left: 1rem;
+  margin-left: 2rem;
   font-family: "Yusei Magic", sans-serif;
+  font-size: 4rem;
 }
 
 .user-panel {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1.6rem;
 }
 
 .user-name {
   margin-right: 2rem;
-  font-size: 2rem;
 }
 
 .button-sign-out {
-  font-size: 2rem;
   background-color: #be6666;
 }
 
@@ -103,6 +103,9 @@ i {
 .main {
   display: flex;
   margin-bottom: 3.5rem;
+
+  /* 100vh - header_height - footer_height */
+  min-height: calc(100vh - 10.4rem - 3.5rem);
 }
 
 .nav {
@@ -173,6 +176,10 @@ i {
   color: var(--primary-light);
 }
 
+.fa-github:hover {
+  color: #ccc;
+}
+
 @media (max-width: 1200px) {
   .project-preview {
     flex: 3;
@@ -192,15 +199,11 @@ i {
 }
 
 @media (max-width: 450px) {
-  .header {
-    flex-direction: column;
-  }
-
-  .user-panel {
-    margin-top: 2rem;
-  }
-
   .project-preview {
     flex: 1;
+  }
+
+  .user-name {
+    display: none;
   }
 }
