@@ -147,6 +147,11 @@ i {
   text-align: left;
 }
 
+.button-nav.active {
+  font-weight: bold;
+  background-color: #ccc;
+}
+
 .button-nav:hover {
   background-color: #ccc;
 }
@@ -169,6 +174,7 @@ i {
 .button-task {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
   padding: 1rem;
   background-color: var(--primary-light);
@@ -178,9 +184,23 @@ i {
   background-color: #ddd;
 }
 
+.left-task-panel {
+  display: flex;
+  align-items: center;
+}
+
 .fa-circle,
 .fa-check-circle {
   font-size: 2.4rem;
+}
+
+.button-add-task {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.button-add-task:hover {
+  background-color: #ddd;
 }
 
 /* Footer */
