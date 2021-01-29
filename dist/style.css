@@ -38,14 +38,14 @@ header {
 
 button {
   display: block;
+  padding: 1rem;
+  border: none;
+  border-radius: 5px;
   color: inherit;
   font-family: inherit;
   font-size: inherit;
-  border: none;
-  border-radius: 5px;
-  outline: none;
   cursor: pointer;
-  padding: 1rem;
+  outline: none;
 }
 
 i {
@@ -79,38 +79,66 @@ i {
   font-size: 4rem;
 }
 
-.user-panel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.fa-bars {
+  margin-right: 0;
+}
+
+.button-options {
+  padding: 0;
+  background-color: var(--primary-dark);
+  font-size: 4rem;
+}
+
+.button-options:hover {
+  color: #bbb;
+}
+
+.options-panel {
+  display: none;
+  position: absolute;
+  top: 7rem;
+  right: 2rem;
+  padding: 2rem;
+  border: 1px solid #999;
+  border-radius: 5px;
+  background-color: var(--secondary-light);
+  color: #222;
   font-size: 1.6rem;
 }
 
+.options-panel.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .user-name {
-  margin-right: 2rem;
+  margin-bottom: 2rem;
 }
 
 .button-sign-out {
-  background-color: #be6666;
+  width: 100%;
+  border: 1px solid #555;
+  background-color: #eb9393;
 }
 
 .button-sign-out:hover {
-  background-color: #ad5555;
+  background-color: #da8282;
 }
 
 /* Main */
 
 .main {
   display: flex;
-  margin-bottom: 3.5rem;
-
-  /* 100vh - header_height - footer_height */
+  /* min-height: calc(100vh - header_height - footer_height) */
   min-height: calc(100vh - 10.4rem - 3.5rem);
+  margin-bottom: 3.5rem;
 }
 
 .nav {
-  padding: 2rem;
   flex: 1;
+  padding: 2rem;
   background-color: var(--secondary-light);
 }
 
@@ -142,8 +170,8 @@ i {
 .button-task {
   display: flex;
   align-items: center;
-  padding: 1rem;
   width: 100%;
+  padding: 1rem;
 }
 
 .button-task:hover {
@@ -172,8 +200,8 @@ i {
 
 .fa-github {
   margin-left: 1rem;
-  font-size: 2rem;
   color: var(--primary-light);
+  font-size: 2rem;
 }
 
 .fa-github:hover {
@@ -201,9 +229,5 @@ i {
 @media (max-width: 450px) {
   .project-preview {
     flex: 1;
-  }
-
-  .user-name {
-    display: none;
   }
 }
