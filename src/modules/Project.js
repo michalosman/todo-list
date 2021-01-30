@@ -1,6 +1,4 @@
-// factory
-
-class Project {
+export default class Project {
   constructor(name) {
     this.name = name;
     this.tasks = [];
@@ -14,17 +12,18 @@ class Project {
     return this.name;
   }
 
-  getTasks() {
-    return this.tasks;
-  }
-
   addTask(task) {
     this.tasks.push(task);
   }
 
-  removeTask(task) {
+  removeTask(taskName) {
+    const task = this.tasks.find((task) => task.name === taskName);
     this.tasks.splice(this.tasks.indexOf(task), 1);
+  }
+
+  getTasks() {
+    return this.tasks;
   }
 }
 
-export default Project;
+// factory implementation

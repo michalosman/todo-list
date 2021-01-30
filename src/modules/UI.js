@@ -1,17 +1,24 @@
-//module
+export default class UI {
+  constructor() {
+    this.buttonAddProject = document.getElementById("button-add-project");
+    this.buttonAddTask = document.getElementById("button-add-task");
 
-class UI {
-  //load projects from local storage or load default projects if empty
+    // load projects from local storage or load default projects if empty
+  }
 
-  //add project
-  //delete project
-  //rename project
-  //open project
+  addProject;
 
-  //add task
-  //delete task
-  //rename task
-  //change task date
+  // add project
+  // delete project
+  // rename project
+  // open project
 
-  constructor() {}
+  // add task
+  // delete task
+  // rename task
+  // change task date
+
+  createProject;
 }
+
+// module implementation
