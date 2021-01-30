@@ -57,7 +57,6 @@ i {
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 2rem;
   background-color: var(--primary-dark);
   color: var(--primary-light);
@@ -78,54 +77,6 @@ i {
   font-size: 4rem;
 }
 
-.button-options {
-  padding: 0;
-  background-color: var(--primary-dark);
-  font-size: 4rem;
-}
-
-.button-options:hover {
-  color: #ccc;
-}
-
-.fa-bars {
-  margin-right: 0;
-}
-
-.options-panel {
-  display: none;
-  position: absolute;
-  top: 7rem;
-  right: 2rem;
-  padding: 2rem;
-  border: 1px solid #aaa;
-  border-radius: 5px;
-  background-color: #ddd;
-  color: #444;
-  font-size: 1.6rem;
-}
-
-.options-panel.active {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.user-name {
-  margin-bottom: 2rem;
-}
-
-.button-sign-out {
-  width: 100%;
-  border: 1px solid #b86060;
-  background-color: #eb9393;
-}
-
-.button-sign-out:hover {
-  background-color: #da8282;
-}
-
 /* Main */
 
 .main {
@@ -141,19 +92,23 @@ i {
   background-color: var(--secondary-light);
 }
 
-.button-nav {
+.button-project {
   width: 100%;
   background-color: var(--secondary-light);
   text-align: left;
 }
 
-.button-nav.active {
+.button-project.active {
   font-weight: bold;
   background-color: #ccc;
 }
 
-.button-nav:hover {
+.button-project:hover {
   background-color: #ccc;
+}
+
+.fa-inbox {
+  margin-right: 0.6rem;
 }
 
 .user-projects h1 {
