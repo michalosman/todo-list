@@ -1,13 +1,26 @@
+// factory
+
 class Task {
-  constructor(name) {
+  constructor(name, dueDate = "No date") {
+    this.name = name;
+    this.dueDate = dueDate;
+  }
+
+  setName(name) {
     this.name = name;
   }
 
-  getAge() {
-    return this.age;
+  getName() {
+    return this.name;
+  }
+
+  setDate(dueDate) {
+    this.dueDate = dueDate;
+  }
+
+  getDate() {
+    return this.dueDate;
   }
 }
 
-const task = new Task("xdddd");
-console.log(task.name);
-console.log(task.getAge());
+export default Task;
