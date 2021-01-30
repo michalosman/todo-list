@@ -8,9 +8,6 @@ export default class UI {
     this.addProjectButton = document.getElementById("button-add-project");
     this.addProjectButton.addEventListener("click", this.addProject);
 
-    this.addTaskButton = document.getElementById("button-add-task");
-    this.addTaskButton.addEventListener("click", this.addTask);
-
     this.projectDefaultButtons = document.querySelectorAll(
       "[data-default-project-button]"
     );
@@ -32,6 +29,7 @@ export default class UI {
   addProject() {
     //show popup
     //cancel - hide popup
+    //add - create popup
     //add to todolist
     //add to UI
     //save local
