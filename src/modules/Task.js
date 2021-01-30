@@ -20,5 +20,3 @@ export default class Task {
     return this.dueDate;
   }
 }
-
-// factory implementation

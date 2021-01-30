@@ -15,9 +15,11 @@ export default class TodoList {
     this.projects.splice(this.projects.indexOf(project), 1);
   }
 
+  getProject(projectName) {
+    return this.projects.find((project) => project.name === projectName);
+  }
+
   getProjects() {
     return this.projects;
   }
 }
-
-// module implementation

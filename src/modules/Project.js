@@ -21,9 +21,11 @@ export default class Project {
     this.tasks.splice(this.tasks.indexOf(task), 1);
   }
 
+  getTask(taskName) {
+    return this.tasks.find((task) => (task.name = taskName));
+  }
+
   getTasks() {
     return this.tasks;
   }
 }
-
-// factory implementation
