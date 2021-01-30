@@ -88,6 +88,7 @@ i {
 
 .nav {
   flex: 1;
+  max-width: 300px;
   padding: 2rem;
   background-color: var(--secondary-light);
 }
@@ -118,6 +119,7 @@ i {
 
 .project-preview {
   flex: 5;
+  max-width: 900px;
   padding: 2rem 4rem;
 }
 
