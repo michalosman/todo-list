@@ -22,4 +22,7 @@ export default class TodoList {
   getProjects() {
     return this.projects;
   }
+
+  //getTasksToday
+  //getTasksThisWeek
 }

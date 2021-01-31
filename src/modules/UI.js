@@ -8,7 +8,11 @@ export default class UI {
     UI.openInboxProjects();
   }
 
-  static renderContent() {}
+  static renderContent() {
+    Storage.getTodoList()
+      .getProjects()
+      .forEach((project) => this.createProject(project.name));
+  }
 
   static initRenderedButtons() {
     const projectButtons = document.querySelectorAll("[data-project-button]");
@@ -144,7 +148,6 @@ export default class UI {
 
   static handleProjectButton(e) {
     const projectName = this.children[0].children[1].textContent;
-    console.log(projectName);
     if (e.target.classList.contains("fas")) {
       UI.deleteProject(projectName);
       return;
@@ -153,10 +156,12 @@ export default class UI {
   }
 
   static openProject(project) {
+    console.log(project + " open");
     //open project from memory by name
   }
 
   static deleteProject(project) {
+    console.log(project + " delete");
     //delete from memory
     //render project from memory
     //open inbox project
