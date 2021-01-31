@@ -48,6 +48,12 @@ button {
   outline: none;
 }
 
+input {
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+}
+
 i {
   margin-right: 1rem;
 }
@@ -92,20 +98,12 @@ i {
   padding: 2rem;
   background-color: var(--secondary-light);
 }
-
-.button-project {
+.button-default-project {
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   background-color: var(--secondary-light);
   text-align: left;
-}
-
-.button-project.active {
-  font-weight: bold;
-  background-color: #ccc;
-}
-
-.button-project:hover {
-  background-color: #ccc;
 }
 
 .fa-inbox {
@@ -115,6 +113,87 @@ i {
 .user-projects h1 {
   padding: 1rem;
   margin-top: 1rem;
+}
+
+.button-project {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: var(--secondary-light);
+  text-align: left;
+}
+
+.button-add-project {
+  width: 100%;
+  margin-left: 0.2rem;
+  background-color: var(--secondary-light);
+  text-align: left;
+}
+
+.button-project.active,
+.button-default-project.active {
+  font-weight: bold;
+  background-color: #ccc;
+}
+
+.button-project:hover,
+.button-default-project:hover,
+.button-add-project:hover {
+  background-color: #ccc;
+}
+
+.right-project-panel {
+  visibility: hidden;
+}
+
+.button-project:hover .right-project-panel {
+  visibility: visible;
+}
+
+.fa-ellipsis-h {
+  margin-right: 0;
+}
+
+.add-project-popup {
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+}
+
+.add-project-popup-input {
+  padding: 1rem;
+  border: 1px solid #aaa;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+}
+
+.add-project-popup-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button-add-project-confirm {
+  width: 45%;
+  border: 1px solid #99dd99;
+  background-color: #aaffaa;
+  font-weight: bold;
+}
+
+.button-add-project-cancel {
+  width: 45%;
+  border: 1px solid #eeadad;
+  background-color: #ffbebe;
+  font-weight: bold;
+}
+
+.button-add-project-confirm:hover {
+  background-color: #99dd99;
+}
+
+.button-add-project-cancel:hover {
+  background-color: #eeadad;
 }
 
 .project-preview {
@@ -158,6 +237,53 @@ i {
 
 .button-add-task:hover {
   background-color: #ddd;
+}
+
+.add-task-popup {
+  display: none;
+  text-align: center;
+  width: 100%;
+  padding: 1rem;
+}
+
+.add-task-popup.active {
+  display: block;
+}
+
+.add-task-popup-input {
+  width: 95%;
+  padding: 1rem;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.add-task-popup-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.button-add-task-confirm {
+  width: 45%;
+  border: 1px solid #99dd99;
+  background-color: #aaffaa;
+  font-weight: bold;
+}
+
+.button-add-task-cancel {
+  width: 45%;
+  border: 1px solid #eeadad;
+  background-color: #ffbebe;
+  font-weight: bold;
+}
+
+.button-add-task-confirm:hover {
+  background-color: #99dd99;
+}
+
+.button-add-task-cancel:hover {
+  background-color: #eeadad;
 }
 
 /* Footer */
