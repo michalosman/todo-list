@@ -125,10 +125,16 @@ i {
 }
 
 .button-add-project {
+  display: block;
   width: 100%;
+  margin-top: 1rem;
   margin-left: 0.2rem;
   background-color: var(--secondary-light);
   text-align: left;
+}
+
+.button-add-project.active {
+  display: none;
 }
 
 .button-project.active,
@@ -156,12 +162,19 @@ i {
 }
 
 .add-project-popup {
+  display: none;
   width: 100%;
+  max-width: 215px;
   padding: 1rem;
   text-align: center;
 }
 
-.add-project-popup-input {
+.add-project-popup.active {
+  display: block;
+}
+
+.input-add-project-popup {
+  width: 100%;
   padding: 1rem;
   border: 1px solid #aaa;
   margin-bottom: 1rem;
@@ -174,25 +187,25 @@ i {
   justify-content: space-between;
 }
 
-.button-add-project-confirm {
+.button-add-project-popup {
   width: 45%;
   border: 1px solid #99dd99;
   background-color: #aaffaa;
   font-weight: bold;
 }
 
-.button-add-project-cancel {
+.button-cancel-project-popup {
   width: 45%;
   border: 1px solid #eeadad;
   background-color: #ffbebe;
   font-weight: bold;
 }
 
-.button-add-project-confirm:hover {
+.button-add-project-popup:hover {
   background-color: #99dd99;
 }
 
-.button-add-project-cancel:hover {
+.button-cancel-project-popup:hover {
   background-color: #eeadad;
 }
 
@@ -231,8 +244,13 @@ i {
 }
 
 .button-add-task {
+  display: block;
   margin-top: 1rem;
   width: 100%;
+}
+
+.button-add-task.active {
+  display: none;
 }
 
 .button-add-task:hover {
@@ -250,7 +268,7 @@ i {
   display: block;
 }
 
-.add-task-popup-input {
+.input-add-task-popup {
   width: 95%;
   padding: 1rem;
   border: 1px solid #aaa;
@@ -264,25 +282,25 @@ i {
   justify-content: space-around;
 }
 
-.button-add-task-confirm {
+.button-add-task-popup {
   width: 45%;
   border: 1px solid #99dd99;
   background-color: #aaffaa;
   font-weight: bold;
 }
 
-.button-add-task-cancel {
+.button-cancel-task-popup {
   width: 45%;
   border: 1px solid #eeadad;
   background-color: #ffbebe;
   font-weight: bold;
 }
 
-.button-add-task-confirm:hover {
+.button-add-task-popup:hover {
   background-color: #99dd99;
 }
 
-.button-add-task-cancel:hover {
+.button-cancel-task-popup:hover {
   background-color: #eeadad;
 }
 
