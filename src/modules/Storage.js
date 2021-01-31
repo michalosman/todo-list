@@ -1,7 +1,9 @@
 export default class Storage {
-  static loadData() {}
-  static addProject() {}
-  static deleteProject() {}
-  static addTask() {}
-  static deleteTask() {}
+  static saveData(name, data) {
+    localStorage.setItem(name, JSON.stringify(data));
+  }
+
+  static getData(name) {
+    return JSON.parse(localStorage.getItem(name));
+  }
 }
