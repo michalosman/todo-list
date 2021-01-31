@@ -1,8 +1,3 @@
-document.getElementById("button-add-task").addEventListener("click", () => {
-  //show popup
-  //cancel - hide popup
-  //add to todolist/project
-  //add to UI
-  //save local
-  //hide popup
-});
+import UI from "./modules/UI";
+
+document.addEventListener("DOMContentLoaded", UI.loadWebsite);
