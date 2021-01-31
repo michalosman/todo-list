@@ -28,15 +28,15 @@
       <main class="main">
         <nav class="nav">
           <div class="default-projects">
-            <button class="button-project" data-default-project-button>
+            <button class="button-default-project" id="button-inbox-projects">
               <i class="fas fa-inbox"></i>
               Inbox
             </button>
-            <button class="button-project" data-default-project-button>
+            <button class="button-default-project" id="button-today-projects">
               <i class="fas fa-calendar-day"></i>
               Today
             </button>
-            <button class="button-project" data-default-project-button>
+            <button class="button-default-project" id="button-week-projects">
               <i class="fas fa-calendar-week"></i>
               This week
             </button>
@@ -44,22 +44,44 @@
           <div class="user-projects">
             <h1>Projects</h1>
             <button class="button-project" data-project-button>
-              <i class="fas fa-tasks"></i>
-              Project 1
+              <div class="left-project-panel">
+                <i class="fas fa-tasks"></i>
+                Project 1
+              </div>
+              <div class="right-project-panel">
+                <i class="fas fa-ellipsis-h"></i>
+              </div>
             </button>
             <button class="button-project" data-project-button>
-              <i class="fas fa-tasks"></i>
-              Project 2
+              <div class="left-project-panel">
+                <i class="fas fa-tasks"></i>
+                Project 2
+              </div>
+              <div class="right-project-panel">
+                <i class="fas fa-ellipsis-h"></i>
+              </div>
             </button>
             <button class="button-project" data-project-button>
-              <i class="fas fa-tasks"></i>
-              Project 3
+              <div class="left-project-panel">
+                <i class="fas fa-tasks"></i>
+                Project 3
+              </div>
+              <div class="right-project-panel">
+                <i class="fas fa-ellipsis-h"></i>
+              </div>
             </button>
           </div>
-          <button class="button-project" id="button-add-project">
+          <button class="button-add-project" id="button-add-project">
             <i class="fas fa-plus"></i>
             Add Project
           </button>
+          <div class="add-project-popup">
+            <input class="add-project-popup-input" type="text" />
+            <div class="add-project-popup-buttons">
+              <button class="button-add-project-confirm">Add</button>
+              <button class="button-add-project-cancel">Cancel</button>
+            </div>
+          </div>
         </nav>
         <div class="project-preview">
           <h1>Inbox</h1>
@@ -95,6 +117,13 @@
               <i class="fas fa-plus"></i>
               Add Task
             </button>
+            <div class="add-task-popup active">
+              <input class="add-task-popup-input" type="text" />
+              <div class="add-task-popup-buttons">
+                <button class="button-add-task-confirm">Add</button>
+                <button class="button-add-task-cancel">Cancel</button>
+              </div>
+            </div>
           </div>
         </div>
       </main>
