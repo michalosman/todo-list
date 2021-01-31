@@ -27,6 +27,7 @@
       </header>
       <main class="main">
         <nav class="nav">
+          <!-- Default projects -->
           <div class="default-projects">
             <button class="button-default-project" id="button-inbox-projects">
               <i class="fas fa-inbox"></i>
@@ -41,66 +42,41 @@
               This week
             </button>
           </div>
-          <div class="user-projects">
+          <!-- User projects -->
+          <div class="user-projects" id="user-projects">
             <h1>Projects</h1>
-            <button class="button-project" data-project-button>
-              <div class="left-project-panel">
-                <i class="fas fa-tasks"></i>
-                Project 1
-              </div>
-              <div class="right-project-panel">
-                <i class="fas fa-ellipsis-h"></i>
-              </div>
-            </button>
-            <button class="button-project" data-project-button>
-              <div class="left-project-panel">
-                <i class="fas fa-tasks"></i>
-                Project 2
-              </div>
-              <div class="right-project-panel">
-                <i class="fas fa-ellipsis-h"></i>
-              </div>
-            </button>
-            <button class="button-project" data-project-button>
-              <div class="left-project-panel">
-                <i class="fas fa-tasks"></i>
-                Project 3
-              </div>
-              <div class="right-project-panel">
-                <i class="fas fa-ellipsis-h"></i>
-              </div>
-            </button>
           </div>
           <button class="button-add-project" id="button-add-project">
             <i class="fas fa-plus"></i>
             Add Project
           </button>
-          <div class="add-project-popup">
+          <div class="add-project-popup" id="add-project-popup">
             <input
-              class="add-project-popup-input"
-              id="add-project-input"
+              class="input-add-project-popup"
+              id="input-add-project-popup"
               type="text"
             />
             <div class="add-project-popup-buttons">
               <button
-                class="button-add-project-confirm"
-                id="button-add-project-confirm"
+                class="button-add-project-popup"
+                id="button-add-project-popup"
               >
                 Add
               </button>
               <button
-                class="button-add-project-cancel"
-                id="button-add-project-cancel"
+                class="button-cancel-project-popup"
+                id="button-cancel-project-popup"
               >
                 Cancel
               </button>
             </div>
           </div>
         </nav>
+        <!-- Tasks -->
         <div class="project-preview">
           <h1>Inbox</h1>
-          <div class="tasks-list">
-            <button class="button-task" data-task-button>
+          <div class="tasks-list" id="tasks-list">
+            <button class="button-task">
               <div class="left-task-panel">
                 <i class="far fa-circle"></i>
                 <p class="task-content">Wash the dishes</p>
@@ -109,7 +85,7 @@
                 <div class="due-date">No date</div>
               </div>
             </button>
-            <button class="button-task" data-task-button>
+            <button class="button-task">
               <div class="left-task-panel">
                 <i class="far fa-circle"></i>
                 <p class="task-content">Wash the dishes</p>
@@ -118,7 +94,7 @@
                 <div class="due-date">No date</div>
               </div>
             </button>
-            <button class="button-task" data-task-button>
+            <button class="button-task">
               <div class="left-task-panel">
                 <i class="far fa-circle"></i>
                 <p class="task-content">Wash the dishes</p>
@@ -127,30 +103,27 @@
                 <div class="due-date">27/01/2021</div>
               </div>
             </button>
-            <button class="button-add-task" id="button-add-task">
-              <i class="fas fa-plus"></i>
-              Add Task
-            </button>
-            <div class="add-task-popup active">
-              <input
-                class="add-task-popup-input"
-                id="add-task-input"
-                type="text"
-              />
-              <div class="add-task-popup-buttons">
-                <button
-                  class="button-add-task-confirm"
-                  id="button-add-task-confirm"
-                >
-                  Add
-                </button>
-                <button
-                  class="button-add-task-cancel"
-                  id="button-add-task-cancel"
-                >
-                  Cancel
-                </button>
-              </div>
+          </div>
+          <button class="button-add-task" id="button-add-task">
+            <i class="fas fa-plus"></i>
+            Add Task
+          </button>
+          <div class="add-task-popup" id="add-task-popup">
+            <input
+              class="input-add-task-popup"
+              id="input-add-task-popup"
+              type="text"
+            />
+            <div class="add-task-popup-buttons">
+              <button class="button-add-task-popup" id="button-add-task-popup">
+                Add
+              </button>
+              <button
+                class="button-cancel-task-popup"
+                id="button-cancel-task-popup"
+              >
+                Cancel
+              </button>
             </div>
           </div>
         </div>

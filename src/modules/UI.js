@@ -1,27 +1,35 @@
-import TodoList from "./TodoList.js";
 import Storage from "./Storage.js";
 
 export default class UI {
-  static loadWebsite() {
-    this.initDefaultButtons();
-    this.loadStorageContent(); //from local storage
+  static load() {
+    UI.renderContent(Storage.loadData());
+    UI.initRenderedButtons();
+    UI.initDefaultButtons();
   }
 
+  static renderContent(todoList) {}
+
+  static initRenderedButtons() {}
+
   static initDefaultButtons() {
-    const inboxProjectsButton = document.getElementById("button-index");
-    const todayProjectsButton = document.getElementById("button-today");
-    const weekProjectsButton = document.getElementById("button-this-week");
-    const addProjectButton = document.getElementById("button-add-project");
-    const addProjectPopupButton = document.getElementBy(
-      "button-add-project-confirm"
+    const inboxProjectsButton = document.getElementById(
+      "button-inbox-projects"
     );
-    const cancelProjectPopupButton = document.getElementBy(
-      "button-add-project-cancel"
+    const todayProjectsButton = document.getElementById(
+      "button-today-projects"
+    );
+    const weekProjectsButton = document.getElementById("button-week-projects");
+    const addProjectButton = document.getElementById("button-add-project");
+    const addProjectPopupButton = document.getElementById(
+      "button-add-project-popup"
+    );
+    const cancelProjectPopupButton = document.getElementById(
+      "button-cancel-project-popup"
     );
     const addTaskButton = document.getElementById("button-add-task");
-    const addTaskPopupButton = document.getElementBy("button-add-task-confirm");
-    const cancelTaskPopupButton = document.getElementBy(
-      "button-add-task-cancel"
+    const addTaskPopupButton = document.getElementById("button-add-task-popup");
+    const cancelTaskPopupButton = document.getElementById(
+      "button-cancel-task-popup"
     );
 
     inboxProjectsButton.addEventListener("click", UI.openInboxProjects);
@@ -37,129 +45,112 @@ export default class UI {
 
   // Default project button handlers
 
-  static openInboxProjects() {
-    //for other random tasks which can't be assign as a project
-  }
+  static openInboxProjects() {}
 
-  static openTodayProjects() {
-    //get all today tasks
-  }
+  static openTodayProjects() {}
 
-  static openWeekProjects() {
-    //get all this week tasks
-  }
+  static openWeekProjects() {}
 
   // Add project button handlers
 
   static openAddProjectPopup() {
+    const projectPopup = document.getElementById("add-project-popup");
+    projectPopup.classList.add("active");
+    this.classList.add("active");
   }
 
   static closeAddProjectPopup() {
-    //show popup
-    //cancel - hide popup
-    //add - create popup
-    //create element and addEventListener (handleProjectNutton)
-    //add to todolist
-    //add to UI
-    //save local
-    //hide popup}
+    const projectPopup = document.getElementById("add-project-popup");
+    projectPopup.classList.remove("active");
 
-  static addProject() {}
+    const projectInput = document.getElementById("input-add-project-popup");
+    projectInput.value = "";
+
+    const addProjectButton = document.getElementById("button-add-project");
+    addProjectButton.classList.remove("active");
+  }
+
+  static addProject() {
+    const projectInput = document.getElementById("input-add-project-popup");
+    if (projectInput.value !== "") UI.createProject(projectInput.value);
+    UI.closeAddProjectPopup();
+  }
+
+  static createProject(name) {
+    const userProjects = document.getElementById("user-projects");
+    userProjects.innerHTML += ` 
+      <button class="button-project">
+        <div class="left-project-panel">
+          <i class="fas fa-tasks"></i>
+          ${name}
+        </div>
+        <div class="right-project-panel">
+          <i class="fas fa-ellipsis-h"></i>
+        </div>
+      </button>`;
+  }
 
   // Add task button handlers
 
   static openAddTaskPopup() {
-    //show popup
-    //cancel - hide popup
-    //create element and addEventListener (handleTaskButton)
-    //add to todolist/project
-    //add to UI
-    //save local
-    //hide popup
+    const addTaskPopup = document.getElementById("add-task-popup");
+    addTaskPopup.classList.add("active");
+    this.classList.add("active");
   }
 
-  static closeAddTaskPopup() {}
+  static closeAddTaskPopup() {
+    const addTaskPopup = document.getElementById("add-task-popup");
+    addTaskPopup.classList.remove("active");
 
-  static addTask() {}
+    const addTaskInput = document.getElementById("input-add-task-popup");
+    addTaskInput.value = "";
 
-  // Creating DOM elements
-
-  createProject(project) {
-    //creates an element in DOM
+    const addTaskButton = document.getElementById("button-add-task");
+    addTaskButton.classList.remove("active");
   }
 
-  createTask(task) {
-    //creates an element in DOM
+  static addTask() {
+    const addTaskPopupInput = document.getElementById("input-add-task-popup");
+    if (addTaskPopupInput.value !== "")
+      UI.createTask(addTaskPopupInput.value, "No date");
+    UI.closeAddTaskPopup();
+  }
+
+  static createTask(name, dueDate) {
+    const tasksList = document.getElementById("tasks-list");
+    tasksList.innerHTML += `
+      <button class="button-task">
+        <div class="left-task-panel">
+          <i class="far fa-circle"></i>
+          <p class="task-content">${name}</p>
+        </div>
+        <div class="right-task-panel">
+          <div class="due-date">${dueDate}</div>
+        </div>
+      </button>`;
   }
 
   // Project button handlers
 
-  handleProjectButton() {
-    //name clicked -> openProject
-    //options clicked -> openProjectSettings
-  }
+  static handleProjectButton() {}
 
-  openProject() {
-    //update UI
-  }
+  static openProject() {}
 
-  openProjectSettings() {
-    //show popup
-    //rename clicked -> renameProject
-    //remove clicked -> removeProject
-    //hide popup
-  }
+  static openProjectSettings() {}
 
-  renameProject() {
-    //show popup (same size as setProject popup)
-    //cancel - hide popup
-    //update todo (setName)
-    //update UI (textContent)
-    //save local
-    //hide popup
-  }
+  static renameProject() {}
 
-  removeProject() {
-    //remove from todolist
-    //remove from UI
-    //save local
-  }
+  static removeProject() {}
 
   // Tasks button handlers
 
-  handleTaskButton() {
-    //tick -> setTaskCompleted
-    //text -> renameTask
-    //date -> setTaskDate
-  }
+  static handleTaskButton() {}
 
-  setTaskCompleted() {
-    //set UI tick completed
-    //cross task out (setTimeout)
-    //removeTask
-  }
+  static setTaskCompleted() {}
 
-  removeTask() {
-    //remove from todoist/project
-    //remove from UI
-    //save local
-  }
+  static removeTask() {}
 
-  renameTask() {
-    //show popup
-    //cancel - hide popup
-    //update todolist/project (setName)
-    //update UI (textContent)
-    //save local
-    //hide popup
-  }
+  static renameTask() {}
 
-  setTaskDate() {
-    //show popup
-    //cancel - hide popup
-    //update todoist/project (setDate)
-    //update UI (textContent)
-    //save local
-    //hide popup
-  }
+  static setTaskDate() {}
 }
