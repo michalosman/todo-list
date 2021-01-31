@@ -90,10 +90,10 @@ export default class UI {
       <button class="button-project" data-project-button>
         <div class="left-project-panel">
           <i class="fas fa-tasks"></i>
-          ${name}
+          <span>${name}</span>
         </div>
         <div class="right-project-panel">
-          <i class="fas fa-ellipsis-h"></i>
+          <i class="fas fa-times"></i>
         </div>
       </button>`;
     UI.initRenderedButtons();
@@ -135,6 +135,7 @@ export default class UI {
         </div>
         <div class="right-task-panel">
           <div class="due-date">${dueDate}</div>
+          <i class="fas fa-times"></i>
         </div>
       </button>`;
   }
@@ -142,24 +143,24 @@ export default class UI {
   // Project button handlers
 
   static handleProjectButton(e) {
+    const projectName = this.children[0].children[1].textContent;
+    console.log(projectName);
     if (e.target.classList.contains("fas")) {
-      UI.openProjectSettings();
+      UI.deleteProject(projectName);
       return;
     }
-    UI.openProject();
+    UI.openProject(projectName);
   }
 
-  static openProject() {
-    console.log("project");
+  static openProject(project) {
+    //open project from memory by name
   }
 
-  static openProjectSettings() {
-    console.log("settings");
+  static deleteProject(project) {
+    //delete from memory
+    //render project from memory
+    //open inbox project
   }
-
-  static renameProject() {}
-
-  static deleteProject() {}
 
   // Tasks button handlers
 
