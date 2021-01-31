@@ -1,7 +1,6 @@
-import Storage from "./modules/Storage";
-import UI from "./modules/UI";
-import TodoList from "./modules/TodoList";
 import Project from "./modules/Project";
-import Task from "./modules/Task";
+import Storage from "./modules/Storage";
+import TodoList from "./modules/TodoList";
+import UI from "./modules/UI";
 
 document.addEventListener("DOMContentLoaded", UI.load());
