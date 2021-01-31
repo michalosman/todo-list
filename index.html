@@ -45,6 +45,19 @@
           <!-- User projects -->
           <div class="user-projects" id="user-projects">
             <h1>Projects</h1>
+            <button class="button-project" data-project-button>
+              <div class="left-project-panel">
+                <i class="fas fa-tasks"></i>
+                Project 1
+              </div>
+              <div class="right-project-panel">
+                <i class="fas fa-ellipsis-h"></i>
+              </div>
+            </button>
+            <div class="project-settings-popup">
+              <button class="button-rename-project">Rename</button>
+              <button class="button-delete-project">Delete</button>
+            </div>
           </div>
           <button class="button-add-project" id="button-add-project">
             <i class="fas fa-plus"></i>
@@ -75,35 +88,7 @@
         <!-- Tasks -->
         <div class="project-preview">
           <h1>Inbox</h1>
-          <div class="tasks-list" id="tasks-list">
-            <button class="button-task">
-              <div class="left-task-panel">
-                <i class="far fa-circle"></i>
-                <p class="task-content">Wash the dishes</p>
-              </div>
-              <div class="right-task-panel">
-                <div class="due-date">No date</div>
-              </div>
-            </button>
-            <button class="button-task">
-              <div class="left-task-panel">
-                <i class="far fa-circle"></i>
-                <p class="task-content">Wash the dishes</p>
-              </div>
-              <div class="right-task-panel">
-                <div class="due-date">No date</div>
-              </div>
-            </button>
-            <button class="button-task">
-              <div class="left-task-panel">
-                <i class="far fa-circle"></i>
-                <p class="task-content">Wash the dishes</p>
-              </div>
-              <div class="right-task-panel">
-                <div class="due-date">27/01/2021</div>
-              </div>
-            </button>
-          </div>
+          <div class="tasks-list" id="tasks-list"></div>
           <button class="button-add-task" id="button-add-task">
             <i class="fas fa-plus"></i>
             Add Task
