@@ -16,7 +16,7 @@ export default class Project {
     this.tasks.push(task);
   }
 
-  removeTask(taskName) {
+  deleteTask(taskName) {
     const task = this.tasks.find((task) => task.name === taskName);
     this.tasks.splice(this.tasks.indexOf(task), 1);
   }

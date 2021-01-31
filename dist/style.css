@@ -110,6 +110,10 @@ i {
   margin-right: 0.6rem;
 }
 
+.user-projects {
+  position: relative;
+}
+
 .user-projects h1 {
   padding: 1rem;
   margin-top: 1rem;
@@ -159,6 +163,40 @@ i {
 
 .fa-ellipsis-h {
   margin-right: 0;
+}
+
+.project-settings-popup {
+  display: none;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.project-settings-popup.active {
+  display: flex;
+}
+
+.button-rename-project {
+  width: 50%;
+  border: 1px solid #99dd99;
+  background-color: #aaffaa;
+  font-weight: bold;
+}
+
+.button-rename-project:hover {
+  background-color: #99dd99;
+}
+
+.button-delete-project {
+  width: 50%;
+  border: 1px solid #eeadad;
+  background-color: #ffbebe;
+  font-weight: bold;
+}
+
+.button-delete-project:hover {
+  background-color: #eeadad;
 }
 
 .add-project-popup {

@@ -1,7 +1,7 @@
 export default class Storage {
   static loadData() {}
   static addProject() {}
-  static removeProject() {}
+  static deleteProject() {}
   static addTask() {}
-  static removeTask() {}
+  static deleteTask() {}
 }
