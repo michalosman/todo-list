@@ -16,7 +16,17 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_UI__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/UI */ \"./src/modules/UI.js\");\n\n\ndocument.addEventListener(\"DOMContentLoaded\", _modules_UI__WEBPACK_IMPORTED_MODULE_0__.default.load());\n\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_Storage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/Storage */ \"./src/modules/Storage.js\");\n/* harmony import */ var _modules_UI__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/UI */ \"./src/modules/UI.js\");\n/* harmony import */ var _modules_TodoList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/TodoList */ \"./src/modules/TodoList.js\");\n/* harmony import */ var _modules_Project__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/Project */ \"./src/modules/Project.js\");\n/* harmony import */ var _modules_Task__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/Task */ \"./src/modules/Task.js\");\n\n\n\n\n\n\ndocument.addEventListener(\"DOMContentLoaded\", _modules_UI__WEBPACK_IMPORTED_MODULE_1__.default.load());\n\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/modules/Project.js":
+/*!********************************!*\
+  !*** ./src/modules/Project.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => /* binding */ Project\n/* harmony export */ });\nclass Project {\n  constructor(name) {\n    this.name = name;\n    this.tasks = [];\n  }\n\n  setName(name) {\n    this.name = name;\n  }\n\n  getName() {\n    return this.name;\n  }\n\n  addTask(task) {\n    this.tasks.push(task);\n  }\n\n  deleteTask(taskName) {\n    const task = this.tasks.find((task) => task.name === taskName);\n    this.tasks.splice(this.tasks.indexOf(task), 1);\n  }\n\n  getTask(taskName) {\n    return this.tasks.find((task) => (task.name = taskName));\n  }\n\n  getTasks() {\n    return this.tasks;\n  }\n}\n\n\n//# sourceURL=webpack://todo-list/./src/modules/Project.js?");
 
 /***/ }),
 
@@ -26,7 +36,27 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mod
   \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => /* binding */ Storage\n/* harmony export */ });\nclass Storage {\n  static loadData() {}\n  static addProject() {}\n  static deleteProject() {}\n  static addTask() {}\n  static deleteTask() {}\n}\n\n\n//# sourceURL=webpack://todo-list/./src/modules/Storage.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => /* binding */ Storage\n/* harmony export */ });\nclass Storage {\n  static saveData(name, data) {\n    localStorage.setItem(name, JSON.stringify(data));\n  }\n\n  static getData(name) {\n    return JSON.parse(localStorage.getItem(name));\n  }\n}\n\n\n//# sourceURL=webpack://todo-list/./src/modules/Storage.js?");
+
+/***/ }),
+
+/***/ "./src/modules/Task.js":
+/*!*****************************!*\
+  !*** ./src/modules/Task.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => /* binding */ Task\n/* harmony export */ });\nclass Task {\n  constructor(name, dueDate = \"No date\") {\n    this.name = name;\n    this.dueDate = dueDate;\n  }\n\n  setName(name) {\n    this.name = name;\n  }\n\n  getName() {\n    return this.name;\n  }\n\n  setDate(dueDate) {\n    this.dueDate = dueDate;\n  }\n\n  getDate() {\n    return this.dueDate;\n  }\n}\n\n\n//# sourceURL=webpack://todo-list/./src/modules/Task.js?");
+
+/***/ }),
+
+/***/ "./src/modules/TodoList.js":
+/*!*********************************!*\
+  !*** ./src/modules/TodoList.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => /* binding */ TodoList\n/* harmony export */ });\nclass TodoList {\n  constructor() {\n    this.projects = [];\n  }\n\n  addProject(project) {\n    if (this.projects.indexOf(project) > 0) return;\n    this.projects.push(project);\n  }\n\n  deleteProject(projectName) {\n    const project = this.projects.find(\n      (project) => project.name === projectName\n    );\n    this.projects.splice(this.projects.indexOf(project), 1);\n  }\n\n  getProject(projectName) {\n    return this.projects.find((project) => project.name === projectName);\n  }\n\n  getProjects() {\n    return this.projects;\n  }\n}\n\n\n//# sourceURL=webpack://todo-list/./src/modules/TodoList.js?");
 
 /***/ }),
 
