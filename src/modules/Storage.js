@@ -37,8 +37,4 @@ export default class Storage {
     todoList.getProject(projectName).deleteTask(taskName);
     Storage.saveTodoList(todoList);
   }
-
-  static containsProject(projectName) {}
-
-  static containsTask(projectName, taskName) {}
 }
