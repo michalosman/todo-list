@@ -6,9 +6,9 @@ import Task from "./Task";
 export default class UI {
   // LOADING CONTENT
 
-  static load() {
-    UI.loadProjects();
+  static loadHomepage() {
     UI.initAddProjectButtons();
+    UI.loadProjects();
   }
 
   static loadProjects() {
@@ -27,44 +27,33 @@ export default class UI {
   static loadProjectContent(projectName) {
     const projectPreview = document.getElementById("project-preview");
     projectPreview.innerHTML = `
-    <h1>${projectName}</h1>
-      <div class="tasks-list" id="tasks-list"></div>
-      <button class="button-add-task" id="button-add-task">
-        <i class="fas fa-plus"></i>
-        Add Task
-      </button>
-      <div class="add-task-popup" id="add-task-popup">
-        <input
-          class="input-add-task-popup"
-          id="input-add-task-popup"
-          type="text"
-        />
-        <div class="add-task-popup-buttons">
-          <button class="button-add-task-popup" id="button-add-task-popup">
-            Add
-          </button>
-          <button
-            class="button-cancel-task-popup"
-            id="button-cancel-task-popup"
-          >
-            Cancel
-          </button>
-        </div>
-      </div>`;
-    UI.loadTasks(projectName);
+      <h1>${projectName}</h1>
+        <div class="tasks-list" id="tasks-list"></div>
+        <button class="button-add-task" id="button-add-task">
+          <i class="fas fa-plus"></i>
+          Add Task
+        </button>
+        <div class="add-task-popup" id="add-task-popup">
+          <input
+            class="input-add-task-popup"
+            id="input-add-task-popup"
+            type="text"
+          />
+          <div class="add-task-popup-buttons">
+            <button class="button-add-task-popup" id="button-add-task-popup">
+              Add
+            </button>
+            <button
+              class="button-cancel-task-popup"
+              id="button-cancel-task-popup"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>`;
     UI.initAddTaskButtons();
-    UI.initTaskButtons();
+    UI.loadTasks(projectName);
   }
-
-  static clear() {
-    const userProjects = document.getElementById("user-projects");
-    userProjects.textContent = "";
-
-    const projectPreview = document.getElementById("project-preview");
-    projectPreview.textContent = "";
-  }
-
-  // CREATING CONTENT
 
   static createProject(name) {
     const userProjects = document.getElementById("user-projects");
@@ -78,6 +67,7 @@ export default class UI {
           <i class="fas fa-times"></i>
         </div>
       </button>`;
+
     UI.initProjectButtons();
   }
 
@@ -94,7 +84,23 @@ export default class UI {
           <i class="fas fa-times"></i>
         </div>
       </button>`;
+
     UI.initTaskButtons();
+  }
+
+  static clear() {
+    UI.clearProjects();
+    UI.clearTasks();
+  }
+
+  static clearProjects() {
+    const userProjects = document.getElementById("user-projects");
+    userProjects.textContent = "";
+  }
+
+  static clearTasks() {
+    const tasksList = document.getElementById("tasks-list");
+    tasksList.textContent = "";
   }
 
   // ADD PROJECT EVENT LISTENERS
@@ -173,7 +179,7 @@ export default class UI {
 
   static handleProjectButton(e) {
     const projectName = this.children[0].children[1].textContent;
-    if (e.target.classList.contains("fas")) {
+    if (e.target.classList.contains("fa-times")) {
       UI.deleteProject(projectName);
       return;
     }
@@ -181,8 +187,8 @@ export default class UI {
   }
 
   static deleteProject(projectName) {
-    UI.clear();
     Storage.deleteProject(projectName);
+    UI.clear();
     UI.loadProjects();
   }
 
@@ -250,21 +256,27 @@ export default class UI {
 
     if (e.target.classList.contains("fa-circle")) {
       UI.setTaskCompleted(projectName, taskName);
-    } else if (e.target.classList.contains("task-content")) {
+      return;
+    }
+    if (e.target.classList.contains("task-content")) {
       UI.renameTask(projectName, taskName);
-    } else if (e.target.classList.contains("due-date")) {
+      return;
+    }
+    if (e.target.classList.contains("due-date")) {
       UI.setTaskDate(projectName, taskName);
-    } else if (e.target.classList.contains("fa-times")) {
+      return;
+    }
+    if (e.target.classList.contains("fa-times")) {
       UI.deleteTask(projectName, taskName);
+      return;
     }
   }
 
   static setTaskCompleted(projectName, taskName) {
     console.log("setCompleted");
     Storage.deleteTask(projectName, taskName);
-    UI.clear();
-    UI.loadProjects();
-    UI.loadProjectContent(projectName);
+    UI.clearTasks();
+    UI.loadTasks(projectName);
   }
 
   static renameTask(projectName, taskName) {
@@ -278,6 +290,7 @@ export default class UI {
   static deleteTask(projectName, taskName) {
     console.log("deleteTask");
     Storage.deleteTask(projectName, taskName);
+    UI.clearTasks();
     UI.loadTasks(projectName);
   }
 }
