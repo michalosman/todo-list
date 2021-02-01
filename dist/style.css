@@ -250,6 +250,30 @@ i {
   align-items: center;
 }
 
+.fa-circle,
+.fa-check-circle {
+  font-size: 2.4rem;
+}
+
+.task-content.active {
+  display: none;
+}
+
+.input-task-name {
+  display: none;
+  height: 3.5rem;
+  padding: 0.5rem;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: var(--secondary-light);
+  color: inherit;
+  font-family: inherit;
+}
+
+.input-task-name.active {
+  display: block;
+}
+
 .right-task-panel {
   display: flex;
   align-items: center;
@@ -259,30 +283,23 @@ i {
   margin-right: 1rem;
 }
 
-.fa-circle,
-.fa-check-circle {
-  font-size: 2.4rem;
-}
-
-.due-date-popup {
+.due-date.active {
   display: none;
-  align-items: center;
-  justify-content: flex-end;
 }
 
-.due-date-popup.active {
-  display: flex;
-}
-
-.due-date-popup input {
+.input-due-date {
+  display: none;
+  padding: 0.5rem;
   border: 1px solid #555;
+  border-radius: 5px;
+  margin: 0 1rem;
+  background-color: var(--secondary-light);
   color: inherit;
   font-family: inherit;
-  border-radius: 5px;
-  padding: 0.5rem;
-  margin-top: 0.5rem;
-  background-color: var(--secondary-light);
-  outline: none;
+}
+
+.input-due-date.active {
+  display: block;
 }
 
 .button-add-task {
