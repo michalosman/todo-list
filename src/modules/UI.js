@@ -80,6 +80,7 @@ export default class UI {
           <p class="task-content">${name}</p>
         </div>
         <div class="right-task-panel">
+          <input type="date" />
           <div class="due-date">${dueDate}</div>
           <i class="fas fa-times"></i>
         </div>
@@ -90,12 +91,18 @@ export default class UI {
 
   static clear() {
     UI.clearProjects();
+    UI.clearProjectPreview();
     UI.clearTasks();
   }
 
   static clearProjects() {
     const userProjects = document.getElementById("user-projects");
     userProjects.textContent = "";
+  }
+
+  static clearProjectPreview() {
+    const projectPreview = document.getElementById("project-preview");
+    projectPreview.textContent = "";
   }
 
   static clearTasks() {
@@ -187,9 +194,13 @@ export default class UI {
   }
 
   static deleteProject(projectName) {
+    const projectPreview = document.getElementById("project-preview");
+    const currentProjectName = projectPreview.children[0].textContent;
+
     Storage.deleteProject(projectName);
     UI.clearProjects();
     UI.loadProjects();
+    if (projectName === currentProjectName) UI.clearProjectPreview();
   }
 
   // ADD TASK EVENT LISTENERS
