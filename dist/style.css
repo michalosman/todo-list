@@ -237,11 +237,11 @@ i {
   background-color: #ddd;
 }
 
-.button-task i {
+.button-task .right-task-panel i {
   visibility: hidden;
 }
 
-.button-task:hover i {
+.button-task:hover .right-task-panel i {
   visibility: visible;
 }
 
