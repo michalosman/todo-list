@@ -80,11 +80,13 @@ export default class UI {
           <p class="task-content">${name}</p>
         </div>
         <div class="right-task-panel">
-          <input type="date" />
-          <div class="due-date">${dueDate}</div>
+          <p class="due-date" id="due-date">${dueDate}</p>
           <i class="fas fa-times"></i>
         </div>
-      </button>`;
+      </button>
+      <div class="due-date-popup" id="due-date-popup">
+        <input type="date" class="input-due-date" id="input-due-date" value="2020-11-11">
+      </div>`;
 
     UI.initTaskButtons();
   }
@@ -274,7 +276,7 @@ export default class UI {
       return;
     }
     if (e.target.classList.contains("due-date")) {
-      UI.setTaskDate(projectName, taskName);
+      UI.setTaskDate(e, projectName, taskName);
       return;
     }
     if (e.target.classList.contains("fa-times")) {
@@ -297,11 +299,13 @@ export default class UI {
     UI.loadTasks(projectName);
   }
 
-  static setTaskDate(projectName, taskName) {
+  static setTaskDate(e, projectName, taskName) {
     console.log("setTaskDate");
+    const dueDatePopup = e.target.parentNode.parentNode.nextElementSibling;
+    dueDatePopup.classList.toggle("active");
     Storage.setTaskDate(projectName, taskName, "New date");
-    UI.clearTasks();
-    UI.loadTasks(projectName);
+    // UI.clearTasks();
+    // UI.loadTasks(projectName);
   }
 
   static deleteTask(projectName, taskName) {

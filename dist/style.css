@@ -264,6 +264,27 @@ i {
   font-size: 2.4rem;
 }
 
+.due-date-popup {
+  display: none;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.due-date-popup.active {
+  display: flex;
+}
+
+.due-date-popup input {
+  border: 1px solid #555;
+  color: inherit;
+  font-family: inherit;
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  background-color: var(--secondary-light);
+  outline: none;
+}
+
 .button-add-task {
   display: block;
   margin-top: 1rem;
