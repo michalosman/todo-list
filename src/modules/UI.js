@@ -136,11 +136,17 @@ export default class UI {
 
   static deleteProject(projectName) {
     Storage.deleteProject(projectName);
-    //UI.clear
+    UI.clear();
     UI.loadProjects();
   }
 
-  static clear() {}
+  static clear() {
+    const userProjects = document.getElementById("user-projects");
+    userProjects.textContent = "";
+
+    const projectPreview = document.getElementById("project-preview");
+    projectPreview.textContent = "";
+  }
 
   // TASK BUTTONS
 
