@@ -77,7 +77,7 @@ export default class UI {
       <button class="button-task" data-task-button>
         <div class="left-task-panel">
           <i class="far fa-circle"></i>
-          <p class="task-content" id="task-content">${name}</p>
+          <p class="task-content">${name}</p>
           <input type="text" class="input-task-name" data-input-task-name>
         </div>
         <div class="right-task-panel">
@@ -263,7 +263,7 @@ export default class UI {
       taskButton.addEventListener("click", UI.handleTaskButton)
     );
     taskNameInputs.forEach((taskNameInput) =>
-      taskNameInput.addEventListener(UI.renameTask)
+      taskNameInput.addEventListener("keypress", UI.renameTask)
     );
     dueDateInputs.forEach((dueDateInput) =>
       dueDateInput.addEventListener("click", UI.setTaskDate)
@@ -271,59 +271,73 @@ export default class UI {
   }
 
   static handleTaskButton(e) {
-    const project = document.getElementById("project-preview");
-    const projectName = project.children[0].textContent;
-    const taskName = this.children[0].children[1].textContent;
-
     if (e.target.classList.contains("fa-circle")) {
-      UI.setTaskCompleted(projectName, taskName);
-      return;
-    }
-    if (e.target.classList.contains("task-content")) {
-      UI.openRenameInput(projectName, taskName);
-      return;
-    }
-    if (e.target.classList.contains("due-date")) {
-      UI.setTaskDate(e, projectName, taskName);
+      UI.setTaskCompleted(this);
       return;
     }
     if (e.target.classList.contains("fa-times")) {
-      UI.deleteTask(projectName, taskName);
+      UI.deleteTask(this);
+      return;
+    }
+    if (e.target.classList.contains("task-content")) {
+      UI.openRenameInput(this);
+      return;
+    }
+    if (e.target.classList.contains("due-date")) {
+      UI.openSetDateInput(this);
       return;
     }
   }
 
-  static setTaskCompleted(projectName, taskName) {
+  static setTaskCompleted(button) {
+    const project = document.getElementById("project-preview");
+    const projectName = project.children[0].textContent;
+    const taskName = button.children[0].children[1].textContent;
+
     Storage.deleteTask(projectName, taskName);
     UI.clearTasks();
     UI.loadTasks(projectName);
   }
 
-  static deleteTask(projectName, taskName) {
+  static deleteTask(button) {
+    const project = document.getElementById("project-preview");
+    const projectName = project.children[0].textContent;
+    const taskName = button.children[0].children[1].textContent;
+
     Storage.deleteTask(projectName, taskName);
     UI.clearTasks();
     UI.loadTasks(projectName);
   }
 
-  static openRenameInput(projectName, taskName) {
-    // hide name
-    // show popup
+  static openRenameInput(button) {
+    const taskContent = button.children[0].children[1];
+    const taskNameInput = button.children[0].children[2];
+
+    taskContent.classList.add("active");
+    taskNameInput.classList.add("active");
   }
 
-  static closeRenameInput() {
-    //hide popup
-    //show name
+  static closeRenameInput(button) {
+    console.log(button);
+    const taskContent = button.children[0].children[1];
+    const taskNameInput = button.children[0].children[2];
+
+    taskContent.classList.remove("active");
+    taskNameInput.classList.remove("active");
   }
 
-  static renameTask() {
-    Storage.renameTask(projectName, taskName, "New name");
-    UI.clearTasks();
-    UI.loadTasks(projectName);
+  static renameTask(e) {
+    if (e.key !== "Enter") return;
+    //should confirm
+    UI.closeRenameInput(this.parentNode.parentNode);
+    // Storage.renameTask(projectName, taskName, "New name");
+    // UI.clearTasks();
+    // UI.loadTasks(projectName);
   }
 
-  static openSetDateInput() {}
+  static openSetDateInput(button) {}
 
-  static closeSetDateInput() {}
+  static closeSetDateInput(button) {}
 
   static setTaskDate(e, projectName, taskName) {
     const dueDatePopup = e.target.parentNode.parentNode.nextElementSibling;
