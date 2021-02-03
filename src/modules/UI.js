@@ -242,12 +242,14 @@ export default class UI {
     const projectName = projectPreview.children[0].textContent;
 
     if (
-      taskName !== "" &&
-      !Storage.getTodoList().getProject(projectName).contains(taskName)
+      taskName === "" ||
+      Storage.getTodoList().getProject(projectName).contains(taskName)
     ) {
-      Storage.addTask(projectName, new Task(taskName));
-      UI.createTask(taskName, "No date");
+      UI.closeAddTaskPopup();
+      return;
     }
+    Storage.addTask(projectName, new Task(taskName));
+    UI.createTask(taskName, "No date");
     UI.closeAddTaskPopup();
   }
 
@@ -332,7 +334,11 @@ export default class UI {
     const taskName = this.previousElementSibling.textContent;
     const newTaskName = this.value;
 
-    if (newTaskName === "") {
+    if (
+      newTaskName === "" ||
+      Storage.getTodoList().getProject(projectName).contains(newTaskName)
+    ) {
+      this.value = "";
       UI.closeRenameInput(this.parentNode.parentNode);
       return;
     }
