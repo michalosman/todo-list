@@ -8,12 +8,21 @@ export default class UI {
   static loadHomepage() {
     UI.initAddProjectButtons();
     UI.loadProjects();
+    UI.loadProjectContent("Inbox");
   }
 
   static loadProjects() {
     Storage.getTodoList()
       .getProjects()
-      .forEach((project) => UI.createProject(project.name));
+      .forEach((project) => {
+        if (
+          project.name !== "Inbox" &&
+          project.name !== "Today" &&
+          project.name !== "This week"
+        ) {
+          UI.createProject(project.name);
+        }
+      });
   }
 
   static loadTasks(projectName) {
@@ -175,14 +184,18 @@ export default class UI {
   }
 
   static openInboxTasks() {
-    //setup event listeners
-    //store in localStorage as Inbox
-    //maybe start page with inbox
+    UI.loadProjectContent("Inbox");
   }
 
-  static openTodayTasks() {}
+  static openTodayTasks() {
+    //sort today
+    UI.loadProjectContent("Today");
+  }
 
-  static openWeekTasks() {}
+  static openWeekTasks() {
+    //sort this week
+    UI.loadProjectContent("This week");
+  }
 
   static handleProjectButton(e) {
     const projectName = this.children[0].children[1].textContent;
