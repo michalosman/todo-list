@@ -1,4 +1,5 @@
 import Task from "./Task";
+import { format } from "date-fns";
 
 export default class Project {
   constructor(name) {
@@ -18,6 +19,10 @@ export default class Project {
     return this.tasks;
   }
 
+  getTask(taskName) {
+    return this.tasks.find((task) => task.name === taskName);
+  }
+
   addTask(task) {
     if (this.tasks.indexOf(task) > 0) return;
     this.tasks.push(task);
@@ -26,10 +31,6 @@ export default class Project {
   deleteTask(taskName) {
     const task = this.tasks.find((task) => task.name === taskName);
     this.tasks.splice(this.tasks.indexOf(task), 1);
-  }
-
-  getTask(taskName) {
-    return this.tasks.find((task) => task.name === taskName);
   }
 
   setTaskName(taskName, newTaskName) {
@@ -45,12 +46,10 @@ export default class Project {
   }
 
   getTasksToday() {
-    const now = new Date();
-    const today = `${now.getFullYear()}-${now.getDay()}-${now.getMonth() + 1}`;
+    const today = format(new Date(), "yyyy-MM-dd");
 
-    return this.tasks.filter((task) => task.dueDate === today);
+    return this.tasks.filter((task) => {
+      return task.dueDate === today;
+    });
   }
-
-  //getTasksToday
-  //getTasksThisWeek
 }

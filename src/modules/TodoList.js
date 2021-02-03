@@ -12,6 +12,10 @@ export default class TodoList {
     return this.projects;
   }
 
+  getProject(projectName) {
+    return this.projects.find((project) => project.name === projectName);
+  }
+
   addProject(project) {
     if (this.projects.indexOf(project) > 0) return;
     this.projects.push(project);
@@ -24,11 +28,14 @@ export default class TodoList {
     this.projects.splice(this.projects.indexOf(project), 1);
   }
 
-  getProject(projectName) {
-    return this.projects.find((project) => project.name === projectName);
-  }
-
   contains(projectName) {
     return this.projects.some((project) => project.name === projectName);
+  }
+
+  updateTodayProject() {
+    this.projects.forEach((project) => {
+      const todayTasks = project.getTasksToday();
+      todayTasks.forEach((task) => this.getProject("Today").addTask(task));
+    });
   }
 }

@@ -201,16 +201,7 @@ export default class UI {
   }
 
   static openTodayTasks() {
-    console.log(Storage.getTodoList());
-    const todayTasks = Storage.getTodoList().getProjects();
-
-    const todayTasks2 = todayTasks.map((project) =>
-      Object.assign(new Project(), project)
-    );
-
-    console.log(todayTasks2);
-    //remove add task
-    //sort today in project class
+    Storage.updateTodayProject();
     UI.openProject("Today", this);
   }
 

@@ -64,4 +64,10 @@ export default class Storage {
     todoList.getProject(projectName).setTaskDate(taskName, newDueDate);
     Storage.saveTodoList(todoList);
   }
+
+  static updateTodayProject() {
+    const todoList = Storage.getTodoList();
+    todoList.updateTodayProject();
+    Storage.saveTodoList(todoList);
+  }
 }
