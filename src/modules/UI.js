@@ -6,7 +6,6 @@ export default class UI {
   // LOADING CONTENT
 
   static loadHomepage() {
-    UI.initAddProjectButtons();
     UI.loadProjects();
     UI.loadProjectContent("Inbox");
   }
@@ -23,6 +22,8 @@ export default class UI {
           UI.createProject(project.name);
         }
       });
+
+    UI.initAddProjectButtons();
   }
 
   static loadTasks(projectName) {
@@ -30,12 +31,14 @@ export default class UI {
       .getProject(projectName)
       .getTasks()
       .forEach((task) => UI.createTask(task.name, task.dueDate));
+
+    UI.initAddTaskButtons();
   }
 
   static loadProjectContent(projectName) {
     const projectPreview = document.getElementById("project-preview");
     projectPreview.innerHTML = `
-      <h1>${projectName}</h1>
+      <h1 id="project-name">${projectName}</h1>
         <div class="tasks-list" id="tasks-list"></div>
         <button class="button-add-task" id="button-add-task">
           <i class="fas fa-plus"></i>
@@ -59,12 +62,14 @@ export default class UI {
             </button>
           </div>
         </div>`;
-    UI.initAddTaskButtons();
+
     UI.loadTasks(projectName);
   }
 
+  // CREATING CONTENT
+
   static createProject(name) {
-    const userProjects = document.getElementById("user-projects");
+    const userProjects = document.getElementById("projects-list");
     userProjects.innerHTML += ` 
       <button class="button-project" data-project-button>
         <div class="left-project-panel">
@@ -99,14 +104,9 @@ export default class UI {
   }
 
   static clear() {
-    UI.clearProjects();
     UI.clearProjectPreview();
+    UI.clearProjects();
     UI.clearTasks();
-  }
-
-  static clearProjects() {
-    const userProjects = document.getElementById("user-projects");
-    userProjects.textContent = "";
   }
 
   static clearProjectPreview() {
@@ -114,12 +114,17 @@ export default class UI {
     projectPreview.textContent = "";
   }
 
+  static clearProjects() {
+    const projectsList = document.getElementById("projects-list");
+    projectsList.textContent = "";
+  }
+
   static clearTasks() {
     const tasksList = document.getElementById("tasks-list");
     tasksList.textContent = "";
   }
 
-  // ADD PROJECT EVENT LISTENERS
+  // PROJECT ADD EVENT LISTENERS
 
   static initAddProjectButtons() {
     const addProjectButton = document.getElementById("button-add-project");
@@ -136,30 +141,38 @@ export default class UI {
   }
 
   static openAddProjectPopup() {
-    const projectPopup = document.getElementById("add-project-popup");
-    projectPopup.classList.add("active");
-    this.classList.add("active");
+    const addProjectPopup = document.getElementById("add-project-popup");
+    const addProjectButton = document.getElementById("button-add-project");
+
+    addProjectPopup.classList.add("active");
+    addProjectButton.classList.add("active");
   }
 
   static closeAddProjectPopup() {
-    const projectPopup = document.getElementById("add-project-popup");
-    projectPopup.classList.remove("active");
-
-    const projectInput = document.getElementById("input-add-project-popup");
-    projectInput.value = "";
-
+    const addProjectPopup = document.getElementById("add-project-popup");
     const addProjectButton = document.getElementById("button-add-project");
+    const addProjectPopupInput = document.getElementById(
+      "input-add-project-popup"
+    );
+
+    addProjectPopup.classList.remove("active");
     addProjectButton.classList.remove("active");
+    addProjectPopupInput.value = "";
   }
 
   static addProject() {
-    const projectInput = document.getElementById("input-add-project-popup");
-    const projectName = projectInput.value;
+    const addProjectPopupInput = document.getElementById(
+      "input-add-project-popup"
+    );
+    const projectName = addProjectPopupInput.value;
 
-    if (projectName !== "" && !Storage.getTodoList().contains(projectName)) {
-      Storage.addProject(new Project(projectName));
-      UI.createProject(projectName);
+    if (projectName === "" || Storage.getTodoList().contains(projectName)) {
+      UI.closeAddProjectPopup();
+      return;
     }
+
+    Storage.addProject(new Project(projectName));
+    UI.createProject(projectName);
     UI.closeAddProjectPopup();
   }
 
@@ -184,36 +197,50 @@ export default class UI {
   }
 
   static openInboxTasks() {
-    UI.loadProjectContent("Inbox");
+    UI.openProject("Inbox", this);
   }
 
   static openTodayTasks() {
     //sort today
-    UI.loadProjectContent("Today");
+    UI.openProject("Today", this);
   }
 
   static openWeekTasks() {
     //sort this week
-    UI.loadProjectContent("This week");
+    UI.openProject("This week", this);
   }
 
   static handleProjectButton(e) {
     const projectName = this.children[0].children[1].textContent;
+
     if (e.target.classList.contains("fa-times")) {
       UI.deleteProject(projectName);
       return;
     }
+
+    UI.openProject(projectName, this);
+  }
+
+  static openProject(projectName, button) {
+    const defaultProjectButtons = document.querySelectorAll(
+      ".button-default-project"
+    );
+    const projectButtons = document.querySelectorAll(".button-project");
+    const buttons = [...defaultProjectButtons, ...projectButtons];
+
+    buttons.forEach((button) => button.classList.remove("active"));
+    button.classList.add("active");
     UI.loadProjectContent(projectName);
   }
 
   static deleteProject(projectName) {
-    const projectPreview = document.getElementById("project-preview");
-    const currentProjectName = projectPreview.children[0].textContent;
+    const openedProjectName = document.getElementById("project-name")
+      .textContent;
 
+    if (projectName === openedProjectName) UI.clearProjectPreview();
     Storage.deleteProject(projectName);
     UI.clearProjects();
     UI.loadProjects();
-    if (projectName === currentProjectName) UI.clearProjectPreview();
   }
 
   // ADD TASK EVENT LISTENERS
@@ -232,27 +259,26 @@ export default class UI {
 
   static openAddTaskPopup() {
     const addTaskPopup = document.getElementById("add-task-popup");
+    const addTaskButton = document.getElementById("button-add-task");
+
     addTaskPopup.classList.add("active");
-    this.classList.add("active");
+    addTaskButton.classList.add("active");
   }
 
   static closeAddTaskPopup() {
     const addTaskPopup = document.getElementById("add-task-popup");
-    addTaskPopup.classList.remove("active");
-
-    const addTaskInput = document.getElementById("input-add-task-popup");
-    addTaskInput.value = "";
-
     const addTaskButton = document.getElementById("button-add-task");
+    const addTaskInput = document.getElementById("input-add-task-popup");
+
+    addTaskPopup.classList.remove("active");
     addTaskButton.classList.remove("active");
+    addTaskInput.value = "";
   }
 
   static addTask() {
+    const projectName = document.getElementById("project-name").textContent;
     const addTaskPopupInput = document.getElementById("input-add-task-popup");
     const taskName = addTaskPopupInput.value;
-
-    const projectPreview = document.getElementById("project-preview");
-    const projectName = projectPreview.children[0].textContent;
 
     if (
       taskName === "" ||
@@ -261,6 +287,7 @@ export default class UI {
       UI.closeAddTaskPopup();
       return;
     }
+
     Storage.addTask(projectName, new Task(taskName));
     UI.createTask(taskName, "No date");
     UI.closeAddTaskPopup();
@@ -304,8 +331,7 @@ export default class UI {
   }
 
   static setTaskCompleted(taskButton) {
-    const project = document.getElementById("project-preview");
-    const projectName = project.children[0].textContent;
+    const projectName = document.getElementById("project-name").textContent;
     const taskName = taskButton.children[0].children[1].textContent;
 
     Storage.deleteTask(projectName, taskName);
@@ -314,8 +340,7 @@ export default class UI {
   }
 
   static deleteTask(taskButton) {
-    const project = document.getElementById("project-preview");
-    const projectName = project.children[0].textContent;
+    const projectName = document.getElementById("project-name").textContent;
     const taskName = taskButton.children[0].children[1].textContent;
 
     Storage.deleteTask(projectName, taskName);
@@ -324,26 +349,26 @@ export default class UI {
   }
 
   static openRenameInput(taskButton) {
-    const taskContent = taskButton.children[0].children[1];
+    const taskName = taskButton.children[0].children[1];
     const taskNameInput = taskButton.children[0].children[2];
 
-    taskContent.classList.add("active");
+    taskName.classList.add("active");
     taskNameInput.classList.add("active");
   }
 
   static closeRenameInput(taskButton) {
-    const taskContent = taskButton.children[0].children[1];
+    const taskName = taskButton.children[0].children[1];
     const taskNameInput = taskButton.children[0].children[2];
 
-    taskContent.classList.remove("active");
+    taskName.classList.remove("active");
     taskNameInput.classList.remove("active");
+    taskNameInput.value = "";
   }
 
   static renameTask(e) {
     if (e.key !== "Enter") return;
 
-    const projectName = document.getElementById("project-preview").children[0]
-      .textContent;
+    const projectName = document.getElementById("project-name").textContent;
     const taskName = this.previousElementSibling.textContent;
     const newTaskName = this.value;
 
@@ -359,8 +384,6 @@ export default class UI {
     Storage.renameTask(projectName, taskName, newTaskName);
     UI.clearTasks();
     UI.loadTasks(projectName);
-
-    this.value = "";
     UI.closeRenameInput(this.parentNode.parentNode);
   }
 
@@ -382,8 +405,7 @@ export default class UI {
 
   static setTaskDate() {
     const taskButton = this.parentNode.parentNode;
-    const projectName = document.getElementById("project-preview").children[0]
-      .textContent;
+    const projectName = document.getElementById("project-name").textContent;
     const taskName = taskButton.children[0].children[1].textContent;
     const newDueDate = this.value;
 
