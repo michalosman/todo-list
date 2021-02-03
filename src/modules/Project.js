@@ -14,6 +14,10 @@ export default class Project {
     return this.name;
   }
 
+  getTasks() {
+    return this.tasks;
+  }
+
   addTask(task) {
     if (this.tasks.indexOf(task) > 0) return;
     this.tasks.push(task);
@@ -25,14 +29,7 @@ export default class Project {
   }
 
   getTask(taskName) {
-    return Object.assign(
-      new Task(),
-      this.tasks.find((task) => task.name === taskName)
-    );
-  }
-
-  getTasks() {
-    return this.tasks;
+    return this.tasks.find((task) => task.name === taskName);
   }
 
   setTaskName(taskName, newTaskName) {
@@ -46,4 +43,14 @@ export default class Project {
   contains(taskName) {
     return this.tasks.some((task) => task.name === taskName);
   }
+
+  getTasksToday() {
+    const now = new Date();
+    const today = `${now.getFullYear()}-${now.getDay()}-${now.getMonth() + 1}`;
+
+    return this.tasks.filter((task) => task.dueDate === today);
+  }
+
+  //getTasksToday
+  //getTasksThisWeek
 }

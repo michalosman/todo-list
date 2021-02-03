@@ -8,6 +8,10 @@ export default class TodoList {
     this.projects.push(new Project("This week"));
   }
 
+  getProjects() {
+    return this.projects;
+  }
+
   addProject(project) {
     if (this.projects.indexOf(project) > 0) return;
     this.projects.push(project);
@@ -21,20 +25,10 @@ export default class TodoList {
   }
 
   getProject(projectName) {
-    return Object.assign(
-      new Project(),
-      this.projects.find((project) => project.name === projectName)
-    );
-  }
-
-  getProjects() {
-    return this.projects;
+    return this.projects.find((project) => project.name === projectName);
   }
 
   contains(projectName) {
     return this.projects.some((project) => project.name === projectName);
   }
-
-  //getTasksToday
-  //getTasksThisWeek
 }

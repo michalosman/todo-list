@@ -7,7 +7,7 @@ export default class UI {
 
   static loadHomepage() {
     UI.loadProjects();
-    UI.loadProjectContent("Inbox");
+    UI.openProject("Inbox", document.getElementById("button-inbox-projects"));
   }
 
   static loadProjects() {
@@ -201,12 +201,22 @@ export default class UI {
   }
 
   static openTodayTasks() {
-    //sort today
+    console.log(Storage.getTodoList());
+    const todayTasks = Storage.getTodoList().getProjects();
+
+    const todayTasks2 = todayTasks.map((project) =>
+      Object.assign(new Project(), project)
+    );
+
+    console.log(todayTasks2);
+    //remove add task
+    //sort today in project class
     UI.openProject("Today", this);
   }
 
   static openWeekTasks() {
-    //sort this week
+    //remove add task
+    //sort this week in project class
     UI.openProject("This week", this);
   }
 

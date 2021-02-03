@@ -1,3 +1,5 @@
+import Project from "./Project";
+import Task from "./Task";
 import TodoList from "./TodoList";
 
 export default class Storage {
@@ -6,10 +8,25 @@ export default class Storage {
   }
 
   static getTodoList() {
-    return Object.assign(
+    // local storage doesn't store type of data so we have to convert it
+
+    const todoList = Object.assign(
       new TodoList(),
       JSON.parse(localStorage.getItem("todoList"))
     );
+
+    todoList.projects = todoList.projects.map(
+      (project) => (project = Object.assign(new Project(), project))
+    );
+
+    todoList.projects.forEach(
+      (project) =>
+        (project.tasks = project.tasks.map((task) =>
+          Object.assign(new Task(), task)
+        ))
+    );
+
+    return todoList;
   }
 
   static addProject(project) {
