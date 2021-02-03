@@ -47,9 +47,6 @@ export default class Project {
 
   getTasksToday() {
     const today = format(new Date(), "yyyy-MM-dd");
-
-    return this.tasks.filter((task) => {
-      return task.dueDate === today;
-    });
+    return this.tasks.filter((task) => task.dueDate === today);
   }
 }
