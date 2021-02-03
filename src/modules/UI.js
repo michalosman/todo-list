@@ -39,8 +39,11 @@ export default class UI {
   static loadProjectContent(projectName) {
     const projectPreview = document.getElementById("project-preview");
     projectPreview.innerHTML = `
-      <h1 id="project-name">${projectName}</h1>
-        <div class="tasks-list" id="tasks-list"></div>
+        <h1 id="project-name">${projectName}</h1>
+        <div class="tasks-list" id="tasks-list"></div>`;
+
+    if (projectName !== "Today" && projectName !== "This week") {
+      projectPreview.innerHTML += `
         <button class="button-add-task" id="button-add-task">
           <i class="fas fa-plus"></i>
           Add Task
@@ -63,6 +66,7 @@ export default class UI {
             </button>
           </div>
         </div>`;
+    }
 
     UI.loadTasks(projectName);
   }
