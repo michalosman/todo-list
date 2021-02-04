@@ -41,7 +41,7 @@ export default class Project {
   }
 
   getTasksToday() {
-    const today = format(new Date(), "yyyy-MM-dd");
+    const today = format(new Date(), "dd/MM/yyyy");
     return this.tasks.filter((task) => task.getDate() === today);
   }
 }

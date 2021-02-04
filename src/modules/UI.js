@@ -1,6 +1,7 @@
 import Storage from "./Storage";
 import Project from "./Project";
 import Task from "./Task";
+import { format } from "date-fns";
 
 export default class UI {
   // LOADING CONTENT
@@ -222,7 +223,7 @@ export default class UI {
     const projectName = this.children[0].children[1].textContent;
 
     if (e.target.classList.contains("fa-times")) {
-      UI.deleteProject(projectName);
+      UI.deleteProject(projectName, this);
       return;
     }
 
@@ -241,11 +242,8 @@ export default class UI {
     UI.loadProjectContent(projectName);
   }
 
-  static deleteProject(projectName) {
-    const openedProjectName = document.getElementById("project-name")
-      .textContent;
-
-    if (projectName === openedProjectName) UI.clearProjectPreview();
+  static deleteProject(projectName, button) {
+    if (button.classList.contains("active")) UI.clearProjectPreview();
     Storage.deleteProject(projectName);
     UI.clearProjects();
     UI.loadProjects();
@@ -434,7 +432,7 @@ export default class UI {
     const taskButton = this.parentNode.parentNode;
     const projectName = document.getElementById("project-name").textContent;
     const taskName = taskButton.children[0].children[1].textContent;
-    const newDueDate = this.value;
+    const newDueDate = format(new Date(this.value), "dd/MM/yyyy");
 
     if (projectName === "Today" || projectName === "This week") {
       const mainProjectName = taskName.split("(")[1].split(")")[0];
