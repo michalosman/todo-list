@@ -13,8 +13,16 @@ export default class TodoList {
     return this.projects;
   }
 
+  setProjects(projects) {
+    this.projects = projects;
+  }
+
   getProject(projectName) {
-    return this.projects.find((project) => project.name === projectName);
+    return this.projects.find((project) => project.getName() === projectName);
+  }
+
+  contains(projectName) {
+    return this.projects.some((project) => project.getName() === projectName);
   }
 
   addProject(project) {
@@ -24,25 +32,22 @@ export default class TodoList {
 
   deleteProject(projectName) {
     const project = this.projects.find(
-      (project) => project.name === projectName
+      (project) => project.getName() === projectName
     );
     this.projects.splice(this.projects.indexOf(project), 1);
   }
 
-  contains(projectName) {
-    return this.projects.some((project) => project.name === projectName);
-  }
-
   updateTodayProject() {
     this.getProject("Today").tasks = [];
+
     this.projects.forEach((project) => {
-      if (project.name === "Today" || project.name === "This week") return;
+      if (project.getName() === "Today" || project.getName() === "This week")
+        return;
 
       const todayTasks = project.getTasksToday();
       todayTasks.forEach((task) => {
-        const taskName = task.name + ` (${project.name})`;
-        if (this.getProject("Today").contains(taskName)) return;
-        this.getProject("Today").addTask(new Task(taskName, task.dueDate));
+        const taskName = task.getName() + ` (${project.getName()})`;
+        this.getProject("Today").addTask(new Task(taskName, task.getDate()));
       });
     });
   }

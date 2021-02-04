@@ -15,16 +15,19 @@ export default class Storage {
       JSON.parse(localStorage.getItem("todoList"))
     );
 
-    todoList.projects = todoList.projects.map(
-      (project) => (project = Object.assign(new Project(), project))
+    todoList.setProjects(
+      todoList
+        .getProjects()
+        .map((project) => (project = Object.assign(new Project(), project)))
     );
 
-    todoList.projects.forEach(
-      (project) =>
-        (project.tasks = project.tasks.map((task) =>
-          Object.assign(new Task(), task)
-        ))
-    );
+    todoList
+      .getProjects()
+      .forEach((project) =>
+        project.setTasks(
+          project.getTasks().map((task) => Object.assign(new Task(), task))
+        )
+      );
 
     return todoList;
   }
@@ -55,13 +58,13 @@ export default class Storage {
 
   static renameTask(projectName, taskName, newTaskName) {
     const todoList = Storage.getTodoList();
-    todoList.getProject(projectName).setTaskName(taskName, newTaskName);
+    todoList.getProject(projectName).getTask(taskName).setName(newTaskName);
     Storage.saveTodoList(todoList);
   }
 
   static setTaskDate(projectName, taskName, newDueDate) {
     const todoList = Storage.getTodoList();
-    todoList.getProject(projectName).setTaskDate(taskName, newDueDate);
+    todoList.getProject(projectName).getTask(taskName).setDate(newDueDate);
     Storage.saveTodoList(todoList);
   }
 
