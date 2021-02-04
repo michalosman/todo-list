@@ -266,7 +266,7 @@ i {
   padding: 0.5rem;
   border: 1px solid #555;
   border-radius: 5px;
-  background-color: var(--secondary-light);
+  background-color: var(--primary-light);
   color: inherit;
   font-family: inherit;
 }
@@ -295,7 +295,7 @@ i {
   border: 1px solid #555;
   border-radius: 5px;
   margin: 0 1rem;
-  background-color: var(--secondary-light);
+  background-color: var(--primary-light);
   color: inherit;
   font-family: inherit;
 }
