@@ -169,10 +169,17 @@ export default class UI {
     const cancelProjectPopupButton = document.getElementById(
       "button-cancel-project-popup"
     );
+    const addProjectPopupInput = document.getElementById(
+      "input-add-project-popup"
+    );
 
     addProjectButton.addEventListener("click", UI.openAddProjectPopup);
     addProjectPopupButton.addEventListener("click", UI.addProject);
     cancelProjectPopupButton.addEventListener("click", UI.closeAddProjectPopup);
+    addProjectPopupInput.addEventListener(
+      "keypress",
+      UI.handleAddProjectPopupInput
+    );
   }
 
   static openAddProjectPopup() {
@@ -210,6 +217,10 @@ export default class UI {
     Storage.addProject(new Project(projectName));
     UI.createProject(projectName);
     UI.closeAddProjectPopup();
+  }
+
+  static handleAddProjectPopupInput(e) {
+    if (e.key === "Enter") UI.addProject();
   }
 
   // PROJECT EVENT LISTENERS
@@ -266,6 +277,7 @@ export default class UI {
 
     buttons.forEach((button) => button.classList.remove("active"));
     button.classList.add("active");
+    UI.closeAddProjectPopup();
     UI.loadProjectContent(projectName);
   }
 
@@ -284,10 +296,12 @@ export default class UI {
     const cancelTaskPopupButton = document.getElementById(
       "button-cancel-task-popup"
     );
+    const addTaskPopupInput = document.getElementById("input-add-task-popup");
 
     addTaskButton.addEventListener("click", UI.openAddTaskPopup);
     addTaskPopupButton.addEventListener("click", UI.addTask);
     cancelTaskPopupButton.addEventListener("click", UI.closeAddTaskPopup);
+    addTaskPopupInput.addEventListener("keypress", UI.handleAddTaskPopupInput);
   }
 
   static openAddTaskPopup() {
@@ -325,6 +339,10 @@ export default class UI {
     Storage.addTask(projectName, new Task(taskName));
     UI.createTask(taskName, "No date");
     UI.closeAddTaskPopup();
+  }
+
+  static handleAddTaskPopupInput(e) {
+    if (e.key === "Enter") UI.addTask();
   }
 
   // TASK EVENT LISTENERS
