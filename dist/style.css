@@ -218,11 +218,11 @@ i {
 }
 
 .button-add-project-popup:hover {
-  background-color: #99dd99;
+  background-color: #a6f0a6;
 }
 
 .button-cancel-project-popup:hover {
-  background-color: #eeadad;
+  background-color: #f5b2b2;
 }
 
 .project-preview {
@@ -377,11 +377,11 @@ i {
 }
 
 .button-add-task-popup:hover {
-  background-color: #99dd99;
+  background-color: #a6f0a6;
 }
 
 .button-cancel-task-popup:hover {
-  background-color: #eeadad;
+  background-color: #f5b2b2;
 }
 
 /* Footer */
