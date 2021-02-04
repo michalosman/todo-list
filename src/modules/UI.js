@@ -214,8 +214,7 @@ export default class UI {
   }
 
   static openWeekTasks() {
-    //remove add task
-    //sort this week in project class
+    Storage.updateWeekProject();
     UI.openProject("This week", this);
   }
 
