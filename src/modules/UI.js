@@ -10,6 +10,7 @@ export default class UI {
     UI.loadProjects();
     UI.initProjectButtons();
     UI.openProject("Inbox", document.getElementById("button-inbox-projects"));
+    document.addEventListener("keydown", UI.handleKeyboard);
   }
 
   static loadProjects() {
@@ -132,6 +133,32 @@ export default class UI {
     tasksList.textContent = "";
   }
 
+  static closeAllPopups() {
+    UI.closeAddProjectPopup();
+    if (document.getElementById("button-add-task")) {
+      UI.closeAddTaskPopup();
+    }
+    if (
+      document.getElementById("tasks-list") &&
+      document.getElementById("tasks-list").innerHTML !== ""
+    ) {
+      UI.closeAllInputs();
+    }
+  }
+
+  static closeAllInputs() {
+    const taskButtons = document.querySelectorAll("[data-task-button]");
+
+    taskButtons.forEach((button) => {
+      UI.closeRenameInput(button);
+      UI.closeSetDateInput(button);
+    });
+  }
+
+  static handleKeyboard(e) {
+    if (e.key === "Escape") UI.closeAllPopups();
+  }
+
   // PROJECT ADD EVENT LISTENERS
 
   static initAddProjectButtons() {
@@ -152,6 +179,7 @@ export default class UI {
     const addProjectPopup = document.getElementById("add-project-popup");
     const addProjectButton = document.getElementById("button-add-project");
 
+    UI.closeAllPopups();
     addProjectPopup.classList.add("active");
     addProjectButton.classList.add("active");
   }
@@ -266,6 +294,7 @@ export default class UI {
     const addTaskPopup = document.getElementById("add-task-popup");
     const addTaskButton = document.getElementById("button-add-task");
 
+    UI.closeAllPopups();
     addTaskPopup.classList.add("active");
     addTaskButton.classList.add("active");
   }
@@ -365,6 +394,7 @@ export default class UI {
     const taskName = taskButton.children[0].children[1];
     const taskNameInput = taskButton.children[0].children[2];
 
+    UI.closeAllPopups();
     taskName.classList.add("active");
     taskNameInput.classList.add("active");
   }
@@ -415,6 +445,7 @@ export default class UI {
     const dueDate = taskButton.children[1].children[0];
     const dueDateInput = taskButton.children[1].children[1];
 
+    UI.closeAllPopups();
     dueDate.classList.add("active");
     dueDateInput.classList.add("active");
   }
