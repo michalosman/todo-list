@@ -63,6 +63,7 @@ i {
 .header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 2rem;
   background-color: var(--primary-dark);
   color: var(--primary-light);
@@ -83,6 +84,12 @@ i {
   font-size: 4rem;
 }
 
+.fa-bars {
+  display: none;
+  font-size: 4rem;
+  cursor: pointer;
+}
+
 /* Main */
 
 .main {
@@ -98,6 +105,11 @@ i {
   padding: 2rem;
   background-color: var(--secondary-light);
 }
+
+.nav.active {
+  display: block;
+}
+
 .button-default-project {
   align-items: center;
   justify-content: space-between;
@@ -168,7 +180,6 @@ i {
 .add-project-popup {
   display: none;
   width: 100%;
-  max-width: 215px;
   padding: 1rem;
   text-align: center;
 }
@@ -181,8 +192,8 @@ i {
   width: 100%;
   padding: 1rem;
   border: 1px solid #aaa;
-  margin-bottom: 1rem;
   border-radius: 5px;
+  margin-bottom: 1rem;
 }
 
 .add-project-popup-buttons {
@@ -231,18 +242,11 @@ i {
   width: 100%;
   padding: 1rem;
   background-color: var(--primary-light);
+  cursor: default;
 }
 
 .button-task:hover {
   background-color: #ddd;
-}
-
-.button-task .right-task-panel i {
-  visibility: hidden;
-}
-
-.button-task:hover .right-task-panel i {
-  visibility: visible;
 }
 
 .left-task-panel {
@@ -250,9 +254,13 @@ i {
   align-items: center;
 }
 
-.fa-circle,
-.fa-check-circle {
+.fa-circle {
   font-size: 2.4rem;
+  cursor: pointer;
+}
+
+.task-content {
+  cursor: pointer;
 }
 
 .task-content.active {
@@ -282,6 +290,7 @@ i {
 
 .due-date {
   margin-right: 1rem;
+  cursor: pointer;
 }
 
 .due-date.active {
@@ -304,6 +313,15 @@ i {
   display: block;
 }
 
+.button-task .right-task-panel i {
+  visibility: hidden;
+  cursor: pointer;
+}
+
+.button-task:hover .right-task-panel i {
+  visibility: visible;
+}
+
 .button-add-task {
   display: block;
   margin-top: 1rem;
@@ -320,9 +338,9 @@ i {
 
 .add-task-popup {
   display: none;
-  text-align: center;
   width: 100%;
   padding: 1rem;
+  text-align: center;
 }
 
 .add-task-popup.active {
@@ -390,6 +408,8 @@ i {
   color: #ccc;
 }
 
+/* Media queries */
+
 @media (max-width: 1200px) {
   .project-preview {
     flex: 3;
@@ -402,14 +422,27 @@ i {
   }
 }
 
-@media (max-width: 550px) {
-  html {
-    font-size: 50%;
+@media (max-width: 650px) {
+  .fa-bars {
+    display: block;
+  }
+
+  .main {
+    flex-direction: column;
+  }
+
+  .nav {
+    max-width: 100%;
+    display: none;
+  }
+
+  .project-preview {
+    flex: 100;
   }
 }
 
-@media (max-width: 450px) {
-  .project-preview {
-    flex: 1;
+@media (max-width: 500px) {
+  html {
+    font-size: 57.5%;
   }
 }
