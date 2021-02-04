@@ -209,7 +209,12 @@ export default class UI {
     );
     const projectName = addProjectPopupInput.value;
 
-    if (projectName === "" || Storage.getTodoList().contains(projectName)) {
+    if (projectName === "") {
+      alert("Project name can't be empty");
+      return;
+    }
+
+    if (Storage.getTodoList().contains(projectName)) {
       addProjectPopupInput.value = "";
       alert("Project names must be different");
       return;
@@ -338,12 +343,13 @@ export default class UI {
     const addTaskPopupInput = document.getElementById("input-add-task-popup");
     const taskName = addTaskPopupInput.value;
 
-    if (
-      taskName === "" ||
-      Storage.getTodoList().getProject(projectName).contains(taskName)
-    ) {
-      addTaskPopupInput.value = "";
+    if (taskName === "") {
+      alert("Task name can't be empty");
+      return;
+    }
+    if (Storage.getTodoList().getProject(projectName).contains(taskName)) {
       alert("Task names must be different");
+      addTaskPopupInput.value = "";
       return;
     }
 
@@ -444,10 +450,12 @@ export default class UI {
     const taskName = this.previousElementSibling.textContent;
     const newTaskName = this.value;
 
-    if (
-      newTaskName === "" ||
-      Storage.getTodoList().getProject(projectName).contains(newTaskName)
-    ) {
+    if (newTaskName === "") {
+      alert("Task name can't be empty");
+      return;
+    }
+
+    if (Storage.getTodoList().getProject(projectName).contains(newTaskName)) {
       this.value = "";
       alert("Task names must be different");
       return;
