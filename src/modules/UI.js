@@ -210,7 +210,8 @@ export default class UI {
     const projectName = addProjectPopupInput.value;
 
     if (projectName === "" || Storage.getTodoList().contains(projectName)) {
-      UI.closeAddProjectPopup();
+      addProjectPopupInput.value = "";
+      alert("Project names must be different");
       return;
     }
 
@@ -341,7 +342,8 @@ export default class UI {
       taskName === "" ||
       Storage.getTodoList().getProject(projectName).contains(taskName)
     ) {
-      UI.closeAddTaskPopup();
+      addTaskPopupInput.value = "";
+      alert("Task names must be different");
       return;
     }
 
@@ -447,7 +449,7 @@ export default class UI {
       Storage.getTodoList().getProject(projectName).contains(newTaskName)
     ) {
       this.value = "";
-      UI.closeRenameInput(this.parentNode.parentNode);
+      alert("Task names must be different");
       return;
     }
 
