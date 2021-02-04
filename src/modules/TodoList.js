@@ -10,12 +10,12 @@ export default class TodoList {
     this.projects.push(new Project("This week"));
   }
 
-  getProjects() {
-    return this.projects;
-  }
-
   setProjects(projects) {
     this.projects = projects;
+  }
+
+  getProjects() {
+    return this.projects;
   }
 
   getProject(projectName) {
