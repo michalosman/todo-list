@@ -84,8 +84,9 @@ i {
   font-size: 4rem;
 }
 
-.fa-bars {
+.button-open-nav {
   display: none;
+  background-color: var(--primary-dark);
   font-size: 4rem;
   cursor: pointer;
 }
@@ -423,7 +424,7 @@ i {
 }
 
 @media (max-width: 650px) {
-  .fa-bars {
+  .button-open-nav {
     display: block;
   }
 
@@ -438,6 +439,11 @@ i {
 
   .project-preview {
     flex: 100;
+  }
+
+  .right-task-panel {
+    justify-content: flex-end;
+    max-width: 30%;
   }
 }
 
