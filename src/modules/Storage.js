@@ -1,10 +1,10 @@
-import Project from "./Project";
-import Task from "./Task";
-import TodoList from "./TodoList";
+import Project from './Project';
+import Task from './Task';
+import TodoList from './TodoList';
 
 export default class Storage {
   static saveTodoList(data) {
-    localStorage.setItem("todoList", JSON.stringify(data));
+    localStorage.setItem('todoList', JSON.stringify(data));
   }
 
   static getTodoList() {
@@ -12,7 +12,7 @@ export default class Storage {
 
     const todoList = Object.assign(
       new TodoList(),
-      JSON.parse(localStorage.getItem("todoList"))
+      JSON.parse(localStorage.getItem('todoList'))
     );
 
     todoList.setProjects(

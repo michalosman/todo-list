@@ -1,13 +1,13 @@
-import Project from "./Project";
-import Task from "./Task";
-import { compareAsc, toDate } from "date-fns";
+import Project from './Project';
+import Task from './Task';
+import { compareAsc, toDate } from 'date-fns';
 
 export default class TodoList {
   constructor() {
     this.projects = [];
-    this.projects.push(new Project("Inbox"));
-    this.projects.push(new Project("Today"));
-    this.projects.push(new Project("This week"));
+    this.projects.push(new Project('Inbox'));
+    this.projects.push(new Project('Today'));
+    this.projects.push(new Project('This week'));
   }
 
   setProjects(projects) {
@@ -39,38 +39,38 @@ export default class TodoList {
   }
 
   updateTodayProject() {
-    this.getProject("Today").tasks = [];
+    this.getProject('Today').tasks = [];
 
     this.projects.forEach((project) => {
-      if (project.getName() === "Today" || project.getName() === "This week")
+      if (project.getName() === 'Today' || project.getName() === 'This week')
         return;
 
       const todayTasks = project.getTasksToday();
       todayTasks.forEach((task) => {
         const taskName = task.getName() + ` (${project.getName()})`;
-        this.getProject("Today").addTask(new Task(taskName, task.getDate()));
+        this.getProject('Today').addTask(new Task(taskName, task.getDate()));
       });
     });
   }
 
   updateWeekProject() {
-    this.getProject("This week").tasks = [];
+    this.getProject('This week').tasks = [];
 
     this.projects.forEach((project) => {
-      if (project.getName() === "Today" || project.getName() === "This week")
+      if (project.getName() === 'Today' || project.getName() === 'This week')
         return;
 
       const weekTasks = project.getTasksThisWeek();
       weekTasks.forEach((task) => {
         const taskName = task.getName() + ` (${project.getName()})`;
-        this.getProject("This week").addTask(
+        this.getProject('This week').addTask(
           new Task(taskName, task.getDate())
         );
       });
     });
 
-    this.getProject("This week").setTasks(
-      this.getProject("This week")
+    this.getProject('This week').setTasks(
+      this.getProject('This week')
         .getTasks()
         .sort((taskA, taskB) =>
           compareAsc(
