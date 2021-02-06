@@ -36,8 +36,8 @@ export default class Project {
   }
 
   deleteTask(taskName) {
-    const task = this.tasks.find((task) => task.getName() === taskName);
-    this.tasks.splice(this.tasks.indexOf(task), 1);
+    const taskToDelete = this.tasks.find((task) => task.getName() === taskName);
+    this.tasks.splice(this.tasks.indexOf(taskToDelete), 1);
   }
 
   getTasksToday() {

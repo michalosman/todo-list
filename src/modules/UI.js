@@ -1,7 +1,7 @@
+import { format } from 'date-fns';
 import Storage from './Storage';
 import Project from './Project';
 import Task from './Task';
-import { format } from 'date-fns';
 
 export default class UI {
   // LOADING CONTENT
@@ -164,13 +164,13 @@ export default class UI {
   static initAddProjectButtons() {
     const addProjectButton = document.getElementById('button-add-project');
     const addProjectPopupButton = document.getElementById(
-      'button-add-project-popup'
+      'button-add-project-popup',
     );
     const cancelProjectPopupButton = document.getElementById(
-      'button-cancel-project-popup'
+      'button-cancel-project-popup',
     );
     const addProjectPopupInput = document.getElementById(
-      'input-add-project-popup'
+      'input-add-project-popup',
     );
 
     addProjectButton.addEventListener('click', UI.openAddProjectPopup);
@@ -178,7 +178,7 @@ export default class UI {
     cancelProjectPopupButton.addEventListener('click', UI.closeAddProjectPopup);
     addProjectPopupInput.addEventListener(
       'keypress',
-      UI.handleAddProjectPopupInput
+      UI.handleAddProjectPopupInput,
     );
   }
 
@@ -195,7 +195,7 @@ export default class UI {
     const addProjectPopup = document.getElementById('add-project-popup');
     const addProjectButton = document.getElementById('button-add-project');
     const addProjectPopupInput = document.getElementById(
-      'input-add-project-popup'
+      'input-add-project-popup',
     );
 
     addProjectPopup.classList.remove('active');
@@ -205,7 +205,7 @@ export default class UI {
 
   static addProject() {
     const addProjectPopupInput = document.getElementById(
-      'input-add-project-popup'
+      'input-add-project-popup',
     );
     const projectName = addProjectPopupInput.value;
 
@@ -233,10 +233,10 @@ export default class UI {
 
   static initProjectButtons() {
     const inboxProjectsButton = document.getElementById(
-      'button-inbox-projects'
+      'button-inbox-projects',
     );
     const todayProjectsButton = document.getElementById(
-      'button-today-projects'
+      'button-today-projects',
     );
     const weekProjectsButton = document.getElementById('button-week-projects');
     const projectButtons = document.querySelectorAll('[data-project-button]');
@@ -246,7 +246,7 @@ export default class UI {
     todayProjectsButton.addEventListener('click', UI.openTodayTasks);
     weekProjectsButton.addEventListener('click', UI.openWeekTasks);
     projectButtons.forEach((projectButton) =>
-      projectButton.addEventListener('click', UI.handleProjectButton)
+      projectButton.addEventListener('click', UI.handleProjectButton),
     );
     openNavButton.addEventListener('click', UI.openNav);
   }
@@ -276,15 +276,15 @@ export default class UI {
     UI.openProject(projectName, this);
   }
 
-  static openProject(projectName, button) {
+  static openProject(projectName, projectButton) {
     const defaultProjectButtons = document.querySelectorAll(
-      '.button-default-project'
+      '.button-default-project',
     );
     const projectButtons = document.querySelectorAll('.button-project');
     const buttons = [...defaultProjectButtons, ...projectButtons];
 
     buttons.forEach((button) => button.classList.remove('active'));
-    button.classList.add('active');
+    projectButton.classList.add('active');
     UI.closeAddProjectPopup();
     UI.loadProjectContent(projectName);
   }
@@ -309,7 +309,7 @@ export default class UI {
     const addTaskButton = document.getElementById('button-add-task');
     const addTaskPopupButton = document.getElementById('button-add-task-popup');
     const cancelTaskPopupButton = document.getElementById(
-      'button-cancel-task-popup'
+      'button-cancel-task-popup',
     );
     const addTaskPopupInput = document.getElementById('input-add-task-popup');
 
@@ -370,13 +370,13 @@ export default class UI {
     const dueDateInputs = document.querySelectorAll('[data-input-due-date');
 
     taskButtons.forEach((taskButton) =>
-      taskButton.addEventListener('click', UI.handleTaskButton)
+      taskButton.addEventListener('click', UI.handleTaskButton),
     );
     taskNameInputs.forEach((taskNameInput) =>
-      taskNameInput.addEventListener('keypress', UI.renameTask)
+      taskNameInput.addEventListener('keypress', UI.renameTask),
     );
     dueDateInputs.forEach((dueDateInput) =>
-      dueDateInput.addEventListener('change', UI.setTaskDate)
+      dueDateInput.addEventListener('change', UI.setTaskDate),
     );
   }
 
@@ -395,7 +395,6 @@ export default class UI {
     }
     if (e.target.classList.contains('due-date')) {
       UI.openSetDateInput(this);
-      return;
     }
   }
 
@@ -467,7 +466,7 @@ export default class UI {
       Storage.renameTask(
         projectName,
         taskName,
-        newTaskName + ` (${mainProjectName})`
+        `${newTaskName} (${mainProjectName})`,
       );
       Storage.renameTask(mainProjectName, mainTaskName, newTaskName);
     } else {

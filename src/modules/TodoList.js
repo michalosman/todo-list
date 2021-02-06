@@ -1,6 +1,6 @@
+import { compareAsc, toDate } from 'date-fns';
 import Project from './Project';
 import Task from './Task';
-import { compareAsc, toDate } from 'date-fns';
 
 export default class TodoList {
   constructor() {
@@ -32,10 +32,10 @@ export default class TodoList {
   }
 
   deleteProject(projectName) {
-    const project = this.projects.find(
-      (project) => project.getName() === projectName
+    const projectToDelete = this.projects.find(
+      (project) => project.getName() === projectName,
     );
-    this.projects.splice(this.projects.indexOf(project), 1);
+    this.projects.splice(this.projects.indexOf(projectToDelete), 1);
   }
 
   updateTodayProject() {
@@ -47,7 +47,7 @@ export default class TodoList {
 
       const todayTasks = project.getTasksToday();
       todayTasks.forEach((task) => {
-        const taskName = task.getName() + ` (${project.getName()})`;
+        const taskName = `${task.getName()} (${project.getName()})`;
         this.getProject('Today').addTask(new Task(taskName, task.getDate()));
       });
     });
@@ -62,9 +62,9 @@ export default class TodoList {
 
       const weekTasks = project.getTasksThisWeek();
       weekTasks.forEach((task) => {
-        const taskName = task.getName() + ` (${project.getName()})`;
+        const taskName = `${task.getName()} (${project.getName()})`;
         this.getProject('This week').addTask(
-          new Task(taskName, task.getDate())
+          new Task(taskName, task.getDate()),
         );
       });
     });
@@ -75,9 +75,9 @@ export default class TodoList {
         .sort((taskA, taskB) =>
           compareAsc(
             toDate(new Date(taskA.getDateFormatted())),
-            toDate(new Date(taskB.getDateFormatted()))
-          )
-        )
+            toDate(new Date(taskB.getDateFormatted())),
+          ),
+        ),
     );
   }
 }
