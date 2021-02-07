@@ -425,12 +425,14 @@ export default class UI {
   }
 
   static openRenameInput(taskButton) {
-    const taskName = taskButton.children[0].children[1];
+    const taskNamePara = taskButton.children[0].children[1];
+    const taskName = taskNamePara.textContent;
     const taskNameInput = taskButton.children[0].children[2];
 
     UI.closeAllPopups();
-    taskName.classList.add('active');
+    taskNamePara.classList.add('active');
     taskNameInput.classList.add('active');
+    taskNameInput.value = taskName;
   }
 
   static closeRenameInput(taskButton) {
