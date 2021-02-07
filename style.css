@@ -271,7 +271,6 @@ i {
 .input-task-name {
   display: none;
   height: 2.4rem;
-  max-width: 12rem;
   padding: 0.5rem;
   border: 1px solid #555;
   border-radius: 5px;
