@@ -426,8 +426,14 @@ export default class UI {
 
   static openRenameInput(taskButton) {
     const taskNamePara = taskButton.children[0].children[1];
-    const taskName = taskNamePara.textContent;
+    let taskName = taskNamePara.textContent;
     const taskNameInput = taskButton.children[0].children[2];
+    const projectName =
+      taskButton.parentNode.parentNode.children[0].textContent;
+
+    if (projectName === 'Today' || projectName === 'This week') {
+      [taskName] = taskName.split(' (');
+    }
 
     UI.closeAllPopups();
     taskNamePara.classList.add('active');
