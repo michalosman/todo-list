@@ -9,12 +9,11 @@
     "prettier/prettier": [
       "error",
       {
-        "trailingComma": "all",
         "singleQuote": true,
-        "semi": true,
+        "semi": false,
         "printWidth": 80,
         "tabWidth": 2,
-        "endOfLine":"auto"
+        "endOfLine": "auto"
       }
     ]
   }
