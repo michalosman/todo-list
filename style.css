@@ -11,36 +11,26 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-
-  /* helpful when creating basic structure */
-  /* border: 1px solid black; */
 }
 
 html {
-  font-size: 62.5%;
-  line-height: 1.6;
-
   /* footer support */
-  position: relative; /* makes html an element which footer sticks to */
-  min-height: 100%; /* not necessary when main takes all available space */
+  position: relative;
+  min-height: 100%;
 }
 
 body {
-  font-size: 1.6rem;
-  font-family: "Roboto", sans-serif;
-  color: var(--primary-dark);
   background-color: var(--primary-light);
+  color: var(--primary-dark);
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  /* footer support */
+  margin-bottom: 48px;
 }
 
-header {
-  font-size: 2.4rem;
-}
-
-button {
-  display: block;
-  padding: 1rem;
+button,
+input {
   border: none;
-  border-radius: 5px;
   color: inherit;
   font-family: inherit;
   font-size: inherit;
@@ -48,14 +38,24 @@ button {
   outline: none;
 }
 
+input[type='text'] {
+  cursor: text;
+}
+
+button {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
 input {
-  font-family: inherit;
-  font-size: inherit;
-  outline: none;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 i {
-  margin-right: 1rem;
+  margin-right: 10px;
 }
 
 /* Header */
@@ -64,7 +64,7 @@ i {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem;
+  padding: 20px;
   background-color: var(--primary-dark);
   color: var(--primary-light);
 }
@@ -76,34 +76,37 @@ i {
 }
 
 .fa-check-double {
-  font-size: 4rem;
+  font-size: 40px;
 }
 
 .page-name {
-  font-family: "Yusei Magic", sans-serif;
-  font-size: 4rem;
+  font-family: 'Yusei Magic', sans-serif;
+  font-size: 40px;
 }
 
 .button-open-nav {
   display: none;
   background-color: var(--primary-dark);
-  font-size: 4rem;
-  cursor: pointer;
+  font-size: 40px;
+  padding: 0;
+}
+
+.btn-open-nav i {
+  margin-right: 0;
 }
 
 /* Main */
 
 .main {
   display: flex;
-  /* min-height: calc(100vh - header_height - footer_height) */
-  min-height: calc(100vh - 10.4rem - 3.5rem);
-  margin-bottom: 3.5rem;
+  /* navbar support */
+  min-height: calc(100vh - 104px - 48px); /*  - header_height - footer_height */
 }
 
 .nav {
-  flex: 1;
-  max-width: 300px;
-  padding: 2rem;
+  width: 300px;
+  min-width: 250px;
+  padding: 20px;
   background-color: var(--secondary-light);
 }
 
@@ -112,40 +115,30 @@ i {
 }
 
 .button-default-project {
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
   background-color: var(--secondary-light);
   text-align: left;
 }
 
 .fa-inbox {
-  margin-right: 0.6rem;
-}
-
-.user-projects {
-  position: relative;
+  margin-right: 6px;
 }
 
 .projects-title {
-  padding: 1rem;
-  margin-top: 1rem;
+  padding: 10px;
+  margin-top: 10px;
 }
 
 .button-project {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
   background-color: var(--secondary-light);
   text-align: left;
 }
 
 .button-add-project {
-  display: block;
-  width: 100%;
-  margin-top: 1rem;
-  margin-left: 0.2rem;
+  margin-top: 10px;
+  margin-left: 2px;
   background-color: var(--secondary-light);
   text-align: left;
 }
@@ -181,7 +174,7 @@ i {
 .add-project-popup {
   display: none;
   width: 100%;
-  padding: 1rem;
+  padding: 10px;
   text-align: center;
 }
 
@@ -190,28 +183,24 @@ i {
 }
 
 .input-add-project-popup {
-  width: 100%;
-  padding: 1rem;
   border: 1px solid #aaa;
-  border-radius: 5px;
-  margin-bottom: 1rem;
+  margin-bottom: 10px;
 }
 
 .add-project-popup-buttons {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 20px;
 }
 
 .button-add-project-popup {
-  width: 45%;
   border: 1px solid #99dd99;
   background-color: #aaffaa;
   font-weight: bold;
 }
 
 .button-cancel-project-popup {
-  width: 45%;
   border: 1px solid #eeadad;
   background-color: #ffbebe;
   font-weight: bold;
@@ -226,28 +215,27 @@ i {
 }
 
 .project-preview {
-  flex: 5;
-  max-width: 900px;
-  padding: 2rem 4rem;
+  width: 900px;
+  padding: 20px 40px;
+  margin: 0 auto;
 }
 
 .project-preview h1 {
-  padding: 0 1rem;
-  margin-bottom: 1rem;
+  padding: 0 10px;
+  margin-bottom: 10px;
 }
 
 .button-task {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  padding: 1rem;
+  padding: 10px;
   background-color: var(--primary-light);
   cursor: default;
 }
 
 .button-task:hover {
-  background-color: #ddd;
+  background-color: var(--secondary-light);
 }
 
 .left-task-panel {
@@ -256,7 +244,7 @@ i {
 }
 
 .fa-circle {
-  font-size: 2.4rem;
+  font-size: 24px;
   cursor: pointer;
 }
 
@@ -270,10 +258,9 @@ i {
 
 .input-task-name {
   display: none;
-  height: 2.4rem;
-  padding: 0.5rem;
+  height: 24px;
+  padding: 5px;
   border: 1px solid #555;
-  border-radius: 5px;
   background-color: var(--primary-light);
   color: inherit;
   font-family: inherit;
@@ -289,7 +276,7 @@ i {
 }
 
 .due-date {
-  margin-right: 1rem;
+  margin-right: 10px;
   cursor: pointer;
 }
 
@@ -299,11 +286,10 @@ i {
 
 .input-due-date {
   display: none;
-  height: 2.4rem;
-  padding: 0.5rem;
+  height: 24px;
+  padding: 5px;
   border: 1px solid #555;
-  border-radius: 5px;
-  margin: 0 1rem;
+  margin: 0 10px;
   background-color: var(--primary-light);
   color: inherit;
   font-family: inherit;
@@ -324,8 +310,9 @@ i {
 
 .button-add-task {
   display: block;
-  margin-top: 1rem;
-  width: 100%;
+  padding-left: 15px;
+  margin-top: 10px;
+  text-align: left;
 }
 
 .button-add-task.active {
@@ -333,13 +320,13 @@ i {
 }
 
 .button-add-task:hover {
-  background-color: #ddd;
+  background-color: var(--secondary-light);
 }
 
 .add-task-popup {
   display: none;
   width: 100%;
-  padding: 1rem;
+  padding: 10px;
   text-align: center;
 }
 
@@ -348,28 +335,24 @@ i {
 }
 
 .input-add-task-popup {
-  width: 95%;
-  padding: 1rem;
   border: 1px solid #aaa;
-  border-radius: 5px;
-  margin-bottom: 1rem;
+  margin-bottom: 10px;
 }
 
 .add-task-popup-buttons {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  gap: 20px;
 }
 
 .button-add-task-popup {
-  width: 45%;
   border: 1px solid #99dd99;
   background-color: #aaffaa;
   font-weight: bold;
 }
 
 .button-cancel-task-popup {
-  width: 45%;
   border: 1px solid #eeadad;
   background-color: #ffbebe;
   font-weight: bold;
@@ -392,35 +375,25 @@ i {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   width: 100%;
-  padding: 0.5rem;
+  padding: 10px;
   background-color: var(--primary-dark);
   color: var(--primary-light);
+  font-size: 18px;
 }
 
 .fa-github {
-  margin-left: 1rem;
   color: var(--primary-light);
-  font-size: 2rem;
+  font-size: 22px;
+  transition: transform 0.3s ease-in-out;
 }
 
 .fa-github:hover {
-  color: #ccc;
+  transform: rotate(360deg) scale(1.2);
 }
 
 /* Media queries */
-
-@media (max-width: 1200px) {
-  .project-preview {
-    flex: 3;
-  }
-}
-
-@media (max-width: 850px) {
-  .project-preview {
-    flex: 2;
-  }
-}
 
 @media (max-width: 650px) {
   .button-open-nav {
@@ -432,12 +405,12 @@ i {
   }
 
   .nav {
-    max-width: 100%;
+    min-width: 100%;
     display: none;
   }
 
   .project-preview {
-    flex: 100;
+    width: 100%;
   }
 
   .right-task-panel {
@@ -447,7 +420,4 @@ i {
 }
 
 @media (max-width: 500px) {
-  html {
-    font-size: 57.5%;
-  }
 }

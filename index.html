@@ -18,71 +18,69 @@
     <script src="main.js" defer></script>
   </head>
   <body>
-    <div id="content">
-      <header class="header">
-        <div class="logo">
-          <i class="fas fa-check-double"></i>
-          <h1 class="page-name">Todo List</h1>
-        </div>
-        <button class="button-open-nav" id="button-open-nav">
-          <i class="fas fa-bars"></i>
-        </button>
-      </header>
-      <main class="main">
-        <nav class="nav" id="nav">
-          <!-- Default projects -->
-          <div class="default-projects-list">
-            <button class="button-default-project" id="button-inbox-projects">
-              <i class="fas fa-inbox"></i>
-              Inbox
-            </button>
-            <button class="button-default-project" id="button-today-projects">
-              <i class="fas fa-calendar-day"></i>
-              Today
-            </button>
-            <button class="button-default-project" id="button-week-projects">
-              <i class="fas fa-calendar-week"></i>
-              This week
-            </button>
-          </div>
-          <!-- User projects -->
-          <h1 class="projects-title">Projects</h1>
-          <div class="projects-list" id="projects-list"></div>
-          <button class="button-add-project" id="button-add-project">
-            <i class="fas fa-plus"></i>
-            Add Project
+    <header class="header">
+      <div class="logo">
+        <i class="fas fa-check-double"></i>
+        <h1 class="page-name">Todo List</h1>
+      </div>
+      <button class="button-open-nav" id="button-open-nav">
+        <i class="fas fa-bars"></i>
+      </button>
+    </header>
+    <main class="main">
+      <nav class="nav" id="nav">
+        <!-- Default projects -->
+        <div class="default-projects-list">
+          <button class="button-default-project" id="button-inbox-projects">
+            <i class="fas fa-inbox"></i>
+            Inbox
           </button>
-          <div class="add-project-popup" id="add-project-popup">
-            <input
-              class="input-add-project-popup"
-              id="input-add-project-popup"
-              type="text"
-            />
-            <div class="add-project-popup-buttons">
-              <button
-                class="button-add-project-popup"
-                id="button-add-project-popup"
-              >
-                Add
-              </button>
-              <button
-                class="button-cancel-project-popup"
-                id="button-cancel-project-popup"
-              >
-                Cancel
-              </button>
-            </div>
+          <button class="button-default-project" id="button-today-projects">
+            <i class="fas fa-calendar-day"></i>
+            Today
+          </button>
+          <button class="button-default-project" id="button-week-projects">
+            <i class="fas fa-calendar-week"></i>
+            This week
+          </button>
+        </div>
+        <!-- User projects -->
+        <h1 class="projects-title">Projects</h1>
+        <div class="projects-list" id="projects-list"></div>
+        <button class="button-add-project" id="button-add-project">
+          <i class="fas fa-plus"></i>
+          Add Project
+        </button>
+        <div class="add-project-popup" id="add-project-popup">
+          <input
+            class="input-add-project-popup"
+            id="input-add-project-popup"
+            type="text"
+          />
+          <div class="add-project-popup-buttons">
+            <button
+              class="button-add-project-popup"
+              id="button-add-project-popup"
+            >
+              Add
+            </button>
+            <button
+              class="button-cancel-project-popup"
+              id="button-cancel-project-popup"
+            >
+              Cancel
+            </button>
           </div>
-        </nav>
-        <!-- Tasks -->
-        <div class="project-preview" id="project-preview"></div>
-      </main>
-      <footer class="footer">
-        <p class="copyright">Copyright © 2021 michalosman</p>
-        <a href="https://github.com/michalosman" class="github-link">
-          <i class="github-icon fab fa-github"></i
-        ></a>
-      </footer>
-    </div>
+        </div>
+      </nav>
+      <!-- Tasks -->
+      <div class="project-preview" id="project-preview"></div>
+    </main>
+    <footer class="footer">
+      <p>Copyright © 2021 michalosman</p>
+      <a href="https://github.com/michalosman" target="_blank">
+        <i class="fab fa-github"></i
+      ></a>
+    </footer>
   </body>
 </html>
