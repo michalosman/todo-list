@@ -34,18 +34,14 @@ input {
   color: inherit;
   font-family: inherit;
   font-size: inherit;
-  cursor: pointer;
   outline: none;
-}
-
-input[type='text'] {
-  cursor: text;
 }
 
 button {
   width: 100%;
   padding: 10px 20px;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 input {
@@ -86,12 +82,13 @@ i {
 
 .button-open-nav {
   display: none;
+  width: 40px;
+  padding: 0;
   background-color: var(--primary-dark);
   font-size: 40px;
-  padding: 0;
 }
 
-.btn-open-nav i {
+.button-open-nav i {
   margin-right: 0;
 }
 
@@ -149,8 +146,8 @@ i {
 
 .button-project.active,
 .button-default-project.active {
-  font-weight: bold;
   background-color: #ccc;
+  font-weight: bold;
 }
 
 .button-project:hover,
@@ -405,7 +402,7 @@ i {
   }
 
   .nav {
-    min-width: 100%;
+    width: 100%;
     display: none;
   }
 
@@ -415,9 +412,6 @@ i {
 
   .right-task-panel {
     justify-content: flex-end;
-    max-width: 30%;
+    max-width: 33%;
   }
-}
-
-@media (max-width: 500px) {
 }
