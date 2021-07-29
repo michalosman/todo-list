@@ -399,10 +399,16 @@ export default class UI {
     const taskName = taskButton.children[0].children[1].textContent
 
     if (projectName === 'Today' || projectName === 'This week') {
-      const mainProjectName = taskName.split('(')[1].split(')')[0]
-      Storage.deleteTask(mainProjectName, taskName)
+      const parentProjectName = taskName.split('(')[1].split(')')[0]
+      Storage.deleteTask(parentProjectName, taskName.split(' ')[0])
+      if (projectName === 'Today') {
+        Storage.updateTodayProject()
+      } else {
+        Storage.updateWeekProject()
+      }
+    } else {
+      Storage.deleteTask(projectName, taskName)
     }
-    Storage.deleteTask(projectName, taskName)
     UI.clearTasks()
     UI.loadTasks(projectName)
   }
