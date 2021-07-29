@@ -8,8 +8,6 @@ export default class Storage {
   }
 
   static getTodoList() {
-    // local storage doesn't store type of data so we have to convert it
-
     const todoList = Object.assign(
       new TodoList(),
       JSON.parse(localStorage.getItem('todoList'))

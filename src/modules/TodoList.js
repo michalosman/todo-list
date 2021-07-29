@@ -26,9 +26,10 @@ export default class TodoList {
     return this.projects.some((project) => project.getName() === projectName)
   }
 
-  addProject(project) {
-    if (this.projects.indexOf(project) > 0) return
-    this.projects.push(project)
+  addProject(newProject) {
+    if (this.projects.find((project) => project.name === newProject.name))
+      return
+    this.projects.push(newProject)
   }
 
   deleteProject(projectName) {

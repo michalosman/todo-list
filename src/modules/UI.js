@@ -10,7 +10,7 @@ export default class UI {
     UI.loadProjects()
     UI.initProjectButtons()
     UI.openProject('Inbox', document.getElementById('button-inbox-projects'))
-    document.addEventListener('keydown', UI.handleKeyboard)
+    document.addEventListener('keydown', UI.handleKeyboardInput)
   }
 
   static loadProjects() {
@@ -155,7 +155,7 @@ export default class UI {
     })
   }
 
-  static handleKeyboard(e) {
+  static handleKeyboardInput(e) {
     if (e.key === 'Escape') UI.closeAllPopups()
   }
 

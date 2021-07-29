@@ -30,14 +30,13 @@ export default class Project {
     return this.tasks.some((task) => task.getName() === taskName)
   }
 
-  addTask(task) {
-    if (this.tasks.indexOf(task) > 0) return
-    this.tasks.push(task)
+  addTask(newTask) {
+    if (this.tasks.find((task) => task.getName() === newTask.name)) return
+    this.tasks.push(newTask)
   }
 
   deleteTask(taskName) {
-    const taskToDelete = this.tasks.find((task) => task.getName() === taskName)
-    this.tasks.splice(this.tasks.indexOf(taskToDelete), 1)
+    this.tasks = this.tasks.filter((task) => task.name !== taskName)
   }
 
   getTasksToday() {
